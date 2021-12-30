@@ -61,17 +61,6 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
             Blog
           </Link>
         </li>
-        <li className="nav__link">
-          <Link
-            to="/contact"
-            className="
-              nav__link--anchor
-              link__hover-effect
-              link__hover-effect--black"
-          >
-            Contact
-          </Link>
-        </li>
         {isAuth && (
           <li className="nav__link">
             <Link
