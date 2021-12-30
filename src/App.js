@@ -2,8 +2,8 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GlobalContext } from "./context/GlobalContext";
 
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
+import { Home } from "./pages/Home/Home";
+import { Login } from "./pages/Login/Login";
 import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
