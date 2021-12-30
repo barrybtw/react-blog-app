@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./nav.scss";
 
-export const Navbar = () => {
+export const Navbar = ({ isAuth }) => {
+  console.log(isAuth)
   return (
     <nav>
       <figure>
@@ -47,10 +48,17 @@ export const Navbar = () => {
           <Link
             to="/"
             className="
-              nav__link--anchor
-              nav__link--anchor-primary"
+              nav__link--anchor"
           >
-            Log In
+            {isAuth ? (
+              <button className="nav__link--anchor-primary nav__login">
+                Log Out
+              </button>
+            ) : (
+              <button className="nav__link--anchor-primary nav__logout">
+                Log In
+              </button>
+            )}
           </Link>
         </li>
       </ul>
