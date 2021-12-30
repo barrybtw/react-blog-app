@@ -4,10 +4,9 @@ import { GlobalContext } from "../context/GlobalContext";
 import { auth, db } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 
-export const NewBlog = () => {
+export const NewBlog = ({ isAuth }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const { isAuth } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   // Create a new post
@@ -50,6 +49,7 @@ export const NewBlog = () => {
           onChange={(e) => setText(e.target.value)}
         />
       </div>
+      <button onClick={createPost}>Submit Post</button>
     </form>
   );
 };

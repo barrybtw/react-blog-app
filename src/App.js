@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
+import { NewBlog } from "./components/NewBlog";
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   console.log(isAuth);
@@ -33,6 +34,7 @@ export const App = () => {
             element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />}
           />
           <Route path="/posts" element={<h1>hi</h1>} />
+          <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         </Routes>
       </GlobalContext.Provider>
     </Router>
