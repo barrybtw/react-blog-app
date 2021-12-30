@@ -3,9 +3,9 @@ import { FcGoogle } from "react-icons/fc";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 //ContextAPI
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../../context/GlobalContext";
 //Firebase
-import { auth, provider } from "../firebase/config";
+import { auth, provider } from "../../firebase/config";
 import { signInWithPopup } from "firebase/auth";
 
 export const Login = ({ isAuth, setIsAuth }) => {

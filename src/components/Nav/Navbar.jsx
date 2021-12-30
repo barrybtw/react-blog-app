@@ -24,7 +24,7 @@ export const Navbar = ({ isAuth }) => {
         </li>
         <li className="nav__link">
           <Link
-            to="/"
+            to="/blog"
             className="
               nav__link--anchor
               link__hover-effect
@@ -35,7 +35,7 @@ export const Navbar = ({ isAuth }) => {
         </li>
         <li className="nav__link">
           <Link
-            to="/"
+            to="/contact"
             className="
               nav__link--anchor
               link__hover-effect
