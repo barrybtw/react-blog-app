@@ -22,6 +22,7 @@ nav {
 
 .nav__link--list {
   display: flex;
+  align-items: center;
 }
 
 .nav__link--anchor {
@@ -37,6 +38,7 @@ nav {
   border-radius: 50px;
   color: #fff;
   transition: all 300ms ease;
+  border: none;
 }
 
 .nav__link--anchor-primary:hover {

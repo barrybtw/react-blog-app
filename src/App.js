@@ -26,7 +26,7 @@ export const App = () => {
   return (
     <Router>
       <GlobalContext.Provider value={(isAuth, setIsAuth)}>
-        <Navbar />
+        <Navbar isAuth={isAuth} />
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route
