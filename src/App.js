@@ -19,6 +19,9 @@ export const App = () => {
     });
   };
 
+  // Use signUserOut, setIsAuth as props
+  // Import auth in the nav
+
   return (
     <Router>
       <GlobalContext.Provider value={(isAuth, setIsAuth)}>
