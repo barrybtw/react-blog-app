@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
+import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 
 export const Home = ({ isAuth }) => {
