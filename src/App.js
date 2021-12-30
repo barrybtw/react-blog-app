@@ -7,7 +7,7 @@ import { Login } from "./pages/Login/Login";
 import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
-import { NewBlog } from "./components/NewBlog";
+import { NewBlog } from "./components/NewBlog/NewBlog";
 import Contact from "./pages/Contact/Contact";
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
