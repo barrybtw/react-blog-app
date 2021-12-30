@@ -87,7 +87,8 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
         )}
 
         <li className="nav__link">
-          <div
+          <Link
+            to="/login"
             className="
               nav__link--anchor"
           >
@@ -102,15 +103,11 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                 Log Out
               </button>
             ) : (
-              <button
-                className="nav__link--anchor-primary nav__logout"
-                onClick={signInWithGoogle}
-                disabled={timer}
-              >
+              <button className="nav__link--anchor-primary nav__logout">
                 Log In
               </button>
             )}
-          </div>
+          </Link>
         </li>
       </ul>
     </nav>
