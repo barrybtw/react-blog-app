@@ -54,3 +54,16 @@
     background: transparent;
   }
 }
+
+.home-blog__list {
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  .blog__content {
+    background-color: gray;
+    padding: 1rem;
+  }
+}

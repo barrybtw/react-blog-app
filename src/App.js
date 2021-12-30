@@ -17,7 +17,6 @@ export const App = () => {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
-      window.location.pathname = "/login";
     });
   };
 
@@ -27,7 +26,11 @@ export const App = () => {
   return (
     <Router>
       <GlobalContext.Provider value={(isAuth, setIsAuth)}>
-        <Navbar isAuth={isAuth} signUserOut={signUserOut} />
+        <Navbar
+          isAuth={isAuth}
+          setIsAuth={setIsAuth}
+          signUserOut={signUserOut}
+        />
         <Routes>
           <Route path="/*" element={<Home isAuth={isAuth} />} />
           <Route
@@ -35,7 +38,7 @@ export const App = () => {
             element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />}
           />
           <Route path="/posts" element={<h1>hi</h1>} />
-          <Route path="contact" element={<Contact />}/>
+          <Route path="contact" element={<Contact />} />
           <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         </Routes>
       </GlobalContext.Provider>

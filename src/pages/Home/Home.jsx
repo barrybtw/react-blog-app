@@ -19,17 +19,16 @@ export const Home = ({ isAuth }) => {
   }, []);
 
   const RenderPosts = () => (
-    <div>
+    <div className="home-blog__list">
       {postLists.map((post) => {
+        console.log(post);
         return (
-          <div className="post" key={Math.random() * 100000}>
-            <div className="postHeader">
-              <div className="title">
-                <h1>{post.title}</h1>
-              </div>
+          <div className="blog__container" key={Math.random() * 100000}>
+            <div className="blog__content">
+              <h1>{post.title}</h1>
+              <div className="postTextContainer">{post.post} </div>
+              <h6 className="blog__author">@{post.author.name}</h6>
             </div>
-            <div className="postTextContainer"> {post.postText} </div>
-            <h6>@{post.author.name}</h6>
           </div>
         );
       })}
