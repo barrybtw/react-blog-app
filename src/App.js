@@ -4,7 +4,7 @@ import { GlobalContext } from "./context/GlobalContext";
 
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
 export const App = () => {
