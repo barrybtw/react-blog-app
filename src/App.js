@@ -31,7 +31,6 @@ export const App = () => {
         />
         <Routes>
           <Route path="/*" element={<Home isAuth={isAuth} />} />
-          <Route path="contact" element={<Contact />} />
           <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         </Routes>
       </GlobalContext.Provider>
