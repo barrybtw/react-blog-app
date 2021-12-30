@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import "./nav.scss";
 
 export const Navbar = () => {
@@ -7,7 +6,7 @@ export const Navbar = () => {
     <nav>
       <figure>
         <Link to="/">
-          <img id="personal-logo" src={logo} alt="" />
+          <img id="personal-logo" src="https://www.onblastblog.com/wp-content/uploads/2017/08/blogger-logo.jpg" alt="" />
         </Link>
       </figure>
       <ul className="nav__link--list">
@@ -38,9 +37,20 @@ export const Navbar = () => {
             to="/"
             className="
               nav__link--anchor
-              nav__link--anchor-primary"
+              link__hover-effect
+              link__hover-effect--black"
           >
             Contact
+          </Link>
+        </li>
+        <li className="nav__link">
+          <Link
+            to="/"
+            className="
+              nav__link--anchor
+              nav__link--anchor-primary"
+          >
+            Log In
           </Link>
         </li>
       </ul>
