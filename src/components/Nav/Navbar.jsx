@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
 import "./nav.scss";
+import { auth, provider } from "../../firebase/config";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { signInWithPopup } from "firebase/auth";
 
-export const Navbar = ({ isAuth, signUserOut }) => {
+export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
+  const navigate = useNavigate();
+  const [timer, setTimer] = useState(false);
+  const signInWithGoogle = () => {
+    if (timer) return;
+    setTimer(true);
+
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(isAuth);
+      setIsAuth(true);
+      localStorage.setItem("isAuth", true);
+
+      navigate("/");
+
+      console.log(res);
+    });
+
+    setTimeout(() => {
+      setTimer(false);
+    }, 1000);
+  };
   console.log(isAuth);
   return (
     <nav>
@@ -63,8 +87,7 @@ export const Navbar = ({ isAuth, signUserOut }) => {
         )}
 
         <li className="nav__link">
-          <Link
-            to="/login"
+          <div
             className="
               nav__link--anchor"
           >
@@ -79,11 +102,15 @@ export const Navbar = ({ isAuth, signUserOut }) => {
                 Log Out
               </button>
             ) : (
-              <button className="nav__link--anchor-primary nav__logout">
+              <button
+                className="nav__link--anchor-primary nav__logout"
+                onClick={signInWithGoogle}
+                disabled={timer}
+              >
                 Log In
               </button>
             )}
-          </Link>
+          </div>
         </li>
       </ul>
     </nav>
