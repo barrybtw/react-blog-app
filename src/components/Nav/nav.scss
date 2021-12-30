@@ -5,63 +5,63 @@ NAVIGATION
 */
 
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 80px;
 }
 
 #personal-logo {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .nav__link--list {
-    display: flex;
+  display: flex;
 }
 
 .nav__link--anchor {
-    margin: 0 24px;
-    font-size: 18px;
-    color: #242424;
-    font-weight: 300;
+  margin: 0 24px;
+  font-size: 18px;
+  color: #242424;
+  font-weight: 300;
 }
 
 .nav__link--anchor-primary {
-    background-color: #032d3c;
-    padding: 12px 40px;
-    border-radius: 50px;
-    color: #FFF;
-    transition: all 300ms ease;
+  background-color: #032d3c;
+  padding: 12px 40px;
+  border-radius: 50px;
+  color: #fff;
+  transition: all 300ms ease;
 }
 
 .nav__link--anchor-primary:hover {
-    background-color: #4be3ac;
+  background-color: #4be3ac;
 }
 
 .link__hover-effect {
-    position: relative;
+  position: relative;
 }
 
 .link__hover-effect:after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    height: 3px;
-    width: 0;
-    right: 0;
-    transition: all 300ms ease;
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  height: 3px;
+  width: 0;
+  right: 0;
+  transition: all 300ms ease;
 }
 
 .link__hover-effect--black:after {
-    background-color: #242424;
+  background-color: #242424;
 }
 
 .link__hover-effect:hover:after {
-    left: 0;
-    width: 100%;
+  left: 0;
+  width: 100%;
 }
