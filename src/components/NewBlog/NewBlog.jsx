@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../context/GlobalContext";
-import { auth, db } from "../firebase/config";
+import { GlobalContext } from "../../context/GlobalContext";
+import { auth, db } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 
 export const NewBlog = ({ isAuth }) => {

@@ -8,6 +8,9 @@ import { GlobalContext } from "../../context/GlobalContext";
 import { auth, provider } from "../../firebase/config";
 import { signInWithPopup } from "firebase/auth";
 
+//scss file
+import "./login.scss";
+
 export const Login = ({ isAuth, setIsAuth }) => {
   const navigate = useNavigate();
   const [timer, setTimer] = useState(false);
@@ -32,14 +35,21 @@ export const Login = ({ isAuth, setIsAuth }) => {
   };
 
   return (
-    <div>
-      {isAuth ? "Is logged on" : "Is not logged on"}
-      <div>
-        <FcGoogle />
+    <section className="login">
+      <div className="login__container">
+        <div className="login__row">
+          
+        </div>
       </div>
-      <button onClick={signInWithGoogle} disabled={timer}>
-        Sign In With Google...
-      </button>
-    </div>
+    </section>
+    // <div>
+    //   {isAuth ? "Is logged on" : "Is not logged on"}
+    //   <div>
+    //     <FcGoogle />
+    //   </div>
+    //   <button onClick={signInWithGoogle} disabled={timer}>
+    //     Sign In With Google...
+    //   </button>
+    // </div>
   );
 };
