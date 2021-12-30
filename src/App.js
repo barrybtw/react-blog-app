@@ -32,8 +32,6 @@ export const App = () => {
         />
         <Routes>
           <Route path="/*" element={<Home isAuth={isAuth} />} />
-
-          <Route path="/posts" element={<h1>hi</h1>} />
           <Route path="contact" element={<Contact />} />
           <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         </Routes>
