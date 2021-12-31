@@ -7,7 +7,6 @@ import { GrNote } from "react-icons/gr";
 //ASSETS
 import Rocket from "./../../assets/rocket.svg";
 import Plane from "./../../assets/plane.svg";
-import { format } from "date-fns/esm";
 export const NewBlog = ({ isAuth }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -19,7 +18,11 @@ export const NewBlog = ({ isAuth }) => {
   // const [imgUrl, setImgUrl] = useState(null);
   const navigate = useNavigate();
 
-  console.log(auth.currentUser.uid);
+  useEffect(() => {
+    if (!auth.currentUser) {
+      navigate("/");
+    }
+  }, []);
 
   // Create a new post
   const createPost = async (event) => {
