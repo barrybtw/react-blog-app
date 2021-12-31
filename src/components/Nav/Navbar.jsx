@@ -4,7 +4,9 @@ import { auth, provider } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
-
+import { ImExit } from "react-icons/im";
+import { BsFillDoorOpenFill } from "react-icons/bs";
+import tmp_logo from "./../../assets/tmp_logo.svg";
 export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
   const navigate = useNavigate();
   const [timer, setTimer] = useState(false);
@@ -31,11 +33,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
     <nav>
       <figure>
         <Link to="/">
-          <img
-            id="personal-logo"
-            src="https://www.onblastblog.com/wp-content/uploads/2017/08/blogger-logo.jpg"
-            alt=""
-          />
+          <img id="personal-logo" src={tmp_logo} alt="" />
         </Link>
       </figure>
       <ul className="nav__link--list">
@@ -88,7 +86,8 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                   signUserOut();
                 }}
               >
-                Log Out
+                <p>Lot Out</p>
+                <ImExit />
               </button>
             ) : (
               <button
@@ -98,7 +97,8 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                   signInWithGoogle();
                 }}
               >
-                Log In
+                <span>Log In</span>
+                <BsFillDoorOpenFill />
               </button>
             )}
           </div>

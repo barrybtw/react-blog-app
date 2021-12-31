@@ -15,9 +15,15 @@ nav {
   height: 80px;
 }
 
+.nav__link--anchor-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 #personal-logo {
-    width: 100px;
-    height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
 .nav__link--list {
