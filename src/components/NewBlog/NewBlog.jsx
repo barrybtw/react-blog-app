@@ -20,10 +20,8 @@ export const NewBlog = ({ isAuth }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuth !== true) navigate("/");
-  }, [isAuth]);
-  useEffect(() => {
-    if (isAuth !== true) navigate("/");
+    if (isAuth) return;
+    navigate("/");
   }, []);
 
   // Create a new post
