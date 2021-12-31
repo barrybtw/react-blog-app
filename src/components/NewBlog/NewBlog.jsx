@@ -15,7 +15,7 @@ export const NewBlog = ({ isAuth }) => {
   const types = ["image/png", "image/jpeg"];
   // error if not correct file type
   const [error, setError] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
+  // const [imgUrl, setImgUrl] = useState(null);
   const navigate = useNavigate();
 
   // Create a new post
@@ -23,19 +23,18 @@ export const NewBlog = ({ isAuth }) => {
     event.preventDefault();
     if (title === "") return;
     if (text === "") return;
-    if (imgUrl === null) return;
-
-    const storageRef = storage.ref(selectedFile.name);
+    // if (imgUrl === null) return;
+    // const storageRef = ref(storage(selectedFile.name));
     const postCollectionRef = collection(db, "posts");
-    const url = await storageRef.getDownloadURL();
-    setImgUrl(url);
-    console.log(url);
+    // const url = await storageRef.getDownloadURL();
+    // setImgUrl(url);
+    // console.log(url);
     await addDoc(postCollectionRef, {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
       createdAt: Date.now(),
-      image: imgUrl,
+      // image: imgUrl,
     });
     navigate("/");
   };
