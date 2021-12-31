@@ -60,11 +60,12 @@ export const Home = ({ isAuth }) => {
                 {isAuth && post.author.id === auth.currentUser.uid && (
                   <div className="deletePost">
                     <button
+                      class="noselect"
                       onClick={() => {
                         deletePost(post.id);
                       }}
                     >
-                      Delete post
+                      <div></div>
                     </button>
                   </div>
                 )}
