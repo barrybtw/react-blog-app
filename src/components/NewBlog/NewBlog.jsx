@@ -28,6 +28,10 @@ export const NewBlog = ({ isAuth }) => {
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
+    if (isAuth !== true) {
+      navigate("/");
+      return;
+    }
     const uploadPath = `selectedfiles/${auth.currentUser.uid}/${selectedFile.name}`;
     const img = await projectStorage.ref(uploadPath).put(selectedFile);
     const imgUrl = await img.ref.getDownloadURL();
