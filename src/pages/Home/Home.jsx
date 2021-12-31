@@ -9,9 +9,7 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
-import { useGlobalContext } from "../../context/GlobalContext";
-import { format, getDay } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import Campfire from "./../../assets/campfire.png";
 
 export const Home = ({ isAuth }) => {
   const [postLists, setPostList] = useState([]);
@@ -29,9 +27,6 @@ export const Home = ({ isAuth }) => {
 
     getPosts();
   }, []);
-  const navigate = useNavigate();
-  const date = new Date();
-  const now = format(date, "(dd,MM,yyyy)");
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
@@ -40,9 +35,17 @@ export const Home = ({ isAuth }) => {
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
-        <h1>Welcome back {auth.currentUser.displayName}!</h1>
+        <div className="welcome__back-div">
+          <h1 className="welcome__back">
+            Welcome back {auth.currentUser.displayName}
+          </h1>
+          <img src={Campfire} alt="" className="welcome__back-img" />
+        </div>
       ) : (
-        <h1>Welcome to Cabin!</h1>
+        <div className="welcome__back-div">
+          <h1 className="welcome__back">Welcome to Cabin</h1>
+          <img src={Campfire} alt="" className="welcome__back-img" />
+        </div>
       )}
       {postLists.map((post) => {
         console.log(post.author.id);
