@@ -17,18 +17,15 @@ export const NewBlog = ({ isAuth }) => {
   const [error, setError] = useState(null);
   const [isDisabled, setIsDisabled] = useState(null);
   const navigate = useNavigate();
-
   useEffect(() => {
-    if (isAuth !== true) navigate("/");
-  }, [isAuth]);
-  useEffect(() => {
-    if (isAuth !== true) navigate("/");
+    if (isAuth) return;
+    navigate("/");
   }, []);
-
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
     if (isAuth !== true) {
+      console.log("erm");
       navigate("/");
       return;
     }
