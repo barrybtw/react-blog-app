@@ -4,7 +4,7 @@ import "./newblog.scss";
 import { auth, db } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { projectStorage } from "../../firebase/config";
-import { GiCoffeeCup } from "react-icons/gi";
+import { GrNote } from "react-icons/gr";
 //ASSETS
 import Rocket from "./../../assets/rocket.svg";
 import Plane from "./../../assets/plane.svg";
@@ -65,7 +65,7 @@ export const NewBlog = ({ isAuth }) => {
       <img src={Plane} alt="Plane" className="absolute_plane abs" />
       <form className="new__blog--form">
         <h1 className="new__blog--form-title">
-          <GiCoffeeCup />
+          <GrNote />
           <span>New Blog</span>
         </h1>
         <div className="new__blog--form-field">
