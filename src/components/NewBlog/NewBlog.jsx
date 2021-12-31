@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, orderBy } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./newblog.scss";
 import { auth, db } from "../../firebase/config";
