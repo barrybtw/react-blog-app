@@ -80,18 +80,18 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
           >
             {isAuth ? (
               <button
-                className="nav__link--anchor-primary nav__login"
+                className="nav__link--anchor-primary nav__logout"
                 onClick={(event) => {
                   event.preventDefault();
                   signUserOut();
                 }}
               >
-                <p>Lot Out</p>
+                <span>Log Out</span>
                 <ImExit />
               </button>
             ) : (
               <button
-                className="nav__link--anchor-primary nav__logout"
+                className="nav__link--anchor-primary nav__login"
                 onClick={(e) => {
                   e.preventDefault();
                   signInWithGoogle();

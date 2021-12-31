@@ -26,6 +26,13 @@ nav {
   height: 75px;
 }
 
+@media screen and (max-width: 600px) {
+  #personal-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .nav__link--list {
   display: flex;
   align-items: center;
@@ -37,6 +44,11 @@ nav {
   color: #242424;
   font-weight: 300;
 }
+@media screen and (max-width: 600px) {
+  .nav__link--anchor {
+    font-size: 14px !important;
+  }
+}
 
 .nav__link--anchor-primary {
   background-color: #032d3c;
@@ -45,6 +57,18 @@ nav {
   color: #fff;
   transition: all 300ms ease;
   border: none;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .nav__link--anchor-primary {
+    background-color: #032d3c;
+    padding: 15px 15px;
+    border-radius: 50px;
+    color: #fff;
+    transition: all 300ms ease;
+    border: none;
+  }
 }
 
 .nav__link--anchor-primary:hover {
@@ -72,4 +96,17 @@ nav {
 .link__hover-effect:hover:after {
   left: 0;
   width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+  .nav__logout {
+    span {
+      display: none;
+    }
+  }
+  .nav__login {
+    svg {
+      display: none;
+    }
+  }
 }
