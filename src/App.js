@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { GlobalContext } from "./context/GlobalContext";
 
 import { Home } from "./pages/Home/Home";
 import { Navbar } from "./components/Nav/Navbar";
@@ -23,17 +22,11 @@ export const App = () => {
 
   return (
     <Router>
-      <GlobalContext.Provider value={(isAuth, setIsAuth)}>
-        <Navbar
-          isAuth={isAuth}
-          setIsAuth={setIsAuth}
-          signUserOut={signUserOut}
-        />
-        <Routes>
-          <Route path="/*" element={<Home isAuth={isAuth} />} />
-          <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
-        </Routes>
-      </GlobalContext.Provider>
+      <Navbar isAuth={isAuth} setIsAuth={setIsAuth} signUserOut={signUserOut} />
+      <Routes>
+        <Route path="/*" element={<Home isAuth={isAuth} />} />
+        <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
+      </Routes>
     </Router>
   );
 };
