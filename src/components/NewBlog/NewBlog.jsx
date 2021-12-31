@@ -33,7 +33,7 @@ export const NewBlog = ({ isAuth }) => {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      createdAt: new Date(),
+      createdAt: Date.now(),
       //image: url,
     });
     navigate("/");
@@ -75,7 +75,7 @@ export const NewBlog = ({ isAuth }) => {
             type="text"
             name="title"
             id="title"
-            placeholder="Title..."
+            placeholder="Begin typing..."
             className="new__blog--form-input"
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -87,7 +87,7 @@ export const NewBlog = ({ isAuth }) => {
             name="text"
             id="text"
             className="new__blog--form-input"
-            placeholder="Message..."
+            placeholder="Begin typing..."
             onChange={(e) => setText(e.target.value)}
           />
         </div>

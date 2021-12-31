@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
+import { orderBy, query } from "firebase/firestore";
 import "./custom.scss";
 
 export const Home = ({ isAuth }) => {
@@ -10,7 +11,8 @@ export const Home = ({ isAuth }) => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
+      const data = query(postsCollectionRef);
+      console.log(data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);
     };
@@ -26,8 +28,6 @@ export const Home = ({ isAuth }) => {
         <h1>Welcome to Cabin!</h1>
       )}
       {postLists.map((post) => {
-        console.log(count);
-        count++;
         return (
           <div className="blog__container" key={post.id}>
             <div className="blog__content">
@@ -36,7 +36,10 @@ export const Home = ({ isAuth }) => {
                 <img className="home__post--img" src={post.image} alt="" />
               )}
               <div className="postTextContainer">{post.post} </div>
-              <h6 className="blog__author">@{post.author.name}</h6>
+              <div>
+                <h6 className="blog__author">@{post.author.name}</h6>
+                <h6>Posted at {new Date(post.createdAt).toString()}</h6>
+              </div>
             </div>
           </div>
         );
