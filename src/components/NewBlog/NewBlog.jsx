@@ -15,17 +15,24 @@ export const NewBlog = ({ isAuth }) => {
   const types = ["image/png", "image/jpeg"];
   // error if not correct file type
   const [error, setError] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth.currentUser) {
-      navigate("/");
-    }
+    if (isAuth !== true) navigate("/");
+  }, [isAuth]);
+  useEffect(() => {
+    if (isAuth !== true) navigate("/");
   }, []);
 
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
+    if (isAuth !== true) {
+      navigate("/");
+      return;
+    }
+    setIsDisabled(true);
     if (title === "") return;
     if (text === "") return;
     let specialDate = new Date();
@@ -61,9 +68,6 @@ export const NewBlog = ({ isAuth }) => {
   };
 
   // Check if user is logged in
-  useEffect(() => {
-    if (!isAuth) navigate("/");
-  }, []);
 
   return (
     <div className="new__blog--container">
@@ -112,7 +116,11 @@ export const NewBlog = ({ isAuth }) => {
             )}
           </div>
         </div>
-        <button onClick={createPost} className="new__blog--form-submit">
+        <button
+          onClick={createPost}
+          disabled={isDisabled}
+          className="new__blog--form-submit"
+        >
           Create Blog
         </button>
       </form>
