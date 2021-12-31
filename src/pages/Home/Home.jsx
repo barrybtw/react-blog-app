@@ -63,7 +63,7 @@ export const Home = ({ isAuth }) => {
                 {isAuth && post.author.id === auth.currentUser.uid && (
                   <div className="deletePost">
                     <button
-                      class="noselect"
+                      className="noselect"
                       onClick={() => {
                         deletePost(post.id);
                       }}
@@ -83,7 +83,7 @@ export const Home = ({ isAuth }) => {
   return (
     <div className="home__container">
       {isLoading ? (
-        <div class="lds-spinner">
+        <div className="lds-spinner">
           <div></div>
           <div></div>
           <div></div>
