@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 
@@ -10,7 +10,9 @@ export const Home = ({ isAuth }) => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
+      const data = await getDocs(
+        query(postsCollectionRef, orderBy("createdAt", "desc"))
+      );
       console.log(data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);
