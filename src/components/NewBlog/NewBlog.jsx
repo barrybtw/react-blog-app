@@ -18,16 +18,19 @@ export const NewBlog = ({ isAuth }) => {
   const [error, setError] = useState(null);
   const [isDisabled, setIsDisabled] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (isAuth) return;
-    navigate("/");
+    if (isAuth !== true) navigate("/");
+  }, [isAuth]);
+  useEffect(() => {
+    if (isAuth !== true) navigate("/");
   }, []);
+
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
-    upload(selectedFile, auth.currentUser, setIsDisabled);
+    // upload(selectedFile, auth.currentUser);
     if (isAuth !== true) {
-      console.log("erm");
       navigate("/");
       return;
     }
