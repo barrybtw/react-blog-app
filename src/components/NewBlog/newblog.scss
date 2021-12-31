@@ -103,12 +103,16 @@
   display: flex;
   flex-flow: nowrap column;
   gap: 0.5rem;
+  border-radius: 0;
   label {
     font-weight: bold;
     text-transform: uppercase;
   }
   :not(input, textarea) {
     user-select: none;
+  }
+  input:focus {
+    border-radius: 0;
   }
   textarea {
     height: 6rem;
