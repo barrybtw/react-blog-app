@@ -37,72 +37,56 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
         </Link>
       </figure>
       <ul className="nav__link--list">
-        <li className="nav__link">
-          <Link
-            to="/"
-            className="
+        <Link
+          to="/"
+          className="
               nav__link--anchor
               link__hover-effect
               link__hover-effect--black"
-          >
-            Home
-          </Link>
-        </li>
-        <li className="nav__link">
-          <Link
-            to="/posts"
-            className="
-              nav__link--anchor
-              link__hover-effect
-              link__hover-effect--black"
-          >
-            Blog
-          </Link>
-        </li>
+        >
+          Home
+        </Link>
+
         {isAuth && (
-          <li className="nav__link">
-            <Link
-              to="/new"
-              className="
+          <Link
+            to="/new"
+            className="
               nav__link--anchor
               link__hover-effect
               link__hover-effect--black"
-            >
-              Create A Blog
-            </Link>
-          </li>
+          >
+            Create A Blog
+          </Link>
         )}
 
-        <li className="nav__link">
-          <div
-            className="
+        <div
+          className="
               nav__link--anchor"
-          >
-            {isAuth ? (
-              <button
-                className="nav__link--anchor-primary nav__logout"
-                onClick={(event) => {
-                  event.preventDefault();
-                  signUserOut();
-                }}
-              >
-                <span>Log Out</span>
-                <ImExit />
-              </button>
-            ) : (
-              <button
-                className="nav__link--anchor-primary nav__login"
-                onClick={(e) => {
-                  e.preventDefault();
-                  signInWithGoogle();
-                }}
-              >
-                <span>Log In</span>
-                <BsFillDoorOpenFill />
-              </button>
-            )}
-          </div>
-        </li>
+        >
+          {isAuth ? (
+            <button
+              className="nav__link--anchor-primary nav__logout"
+              onClick={(event) => {
+                event.preventDefault();
+                signUserOut();
+              }}
+            >
+              <span>Log Out</span>
+              <ImExit />
+            </button>
+          ) : (
+            <button
+              className="nav__link--anchor-primary nav__login"
+              onClick={(e) => {
+                e.preventDefault();
+                signInWithGoogle();
+              }}
+            >
+              <span>Log In</span>
+              <BsFillDoorOpenFill />
+            </button>
+          )}
+        </div>
       </ul>
     </nav>
   );

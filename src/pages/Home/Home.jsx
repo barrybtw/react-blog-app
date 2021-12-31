@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { format, getDay } from "date-fns";
 
-export const Home = ({ isAuth }) => {
+export const Home = () => {
+  const { isAuth, setIsAuth } = useGlobalContext();
   const [postLists, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const postsCollectionRef = collection(db, "posts");
@@ -13,13 +16,14 @@ export const Home = ({ isAuth }) => {
       const data = await getDocs(
         query(postsCollectionRef, orderBy("createdAt", "desc"))
       );
-      console.log(data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);
     };
 
     getPosts();
   }, []);
+  const date = new Date();
+  const now = format(date, "(dd,MM,yyyy)");
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
@@ -36,9 +40,9 @@ export const Home = ({ isAuth }) => {
                 <img className="home__post--img" src={post.image} alt="" />
               )}
               <div className="postTextContainer">{post.post} </div>
-              <div>
-                <h6 className="blog__author">@{post.author.name}</h6>
-                <h6>Posted at {new Date(post.createdAt).toString()}</h6>
+              <div className="postMetaInfo">
+                <h6 className="blog__author">@ {post.author.name}</h6>
+                <h6>Posted {post.postTime}</h6>
               </div>
             </div>
           </div>

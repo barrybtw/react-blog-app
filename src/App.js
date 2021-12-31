@@ -6,6 +6,9 @@ import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { NewBlog } from "./components/NewBlog/NewBlog";
+
+import { ContextAPI } from "./context/GlobalContext";
+import da from "date-fns/esm/locale/da/index.js";
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   console.log(isAuth);
@@ -21,12 +24,18 @@ export const App = () => {
   // Import auth in the nav
 
   return (
-    <Router>
-      <Navbar isAuth={isAuth} setIsAuth={setIsAuth} signUserOut={signUserOut} />
-      <Routes>
-        <Route path="/*" element={<Home isAuth={isAuth} />} />
-        <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
-      </Routes>
-    </Router>
+    <ContextAPI>
+      <Router>
+        <Navbar
+          isAuth={isAuth}
+          setIsAuth={setIsAuth}
+          signUserOut={signUserOut}
+        />
+        <Routes>
+          <Route path="/*" element={<Home isAuth={isAuth} />} />
+          <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
+        </Routes>
+      </Router>
+    </ContextAPI>
   );
 };

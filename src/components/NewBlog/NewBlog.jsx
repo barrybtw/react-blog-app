@@ -1,4 +1,4 @@
-import { addDoc, collection, orderBy } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./newblog.scss";
 import { auth, db, storage } from "../../firebase/config";
@@ -7,6 +7,7 @@ import { GrNote } from "react-icons/gr";
 //ASSETS
 import Rocket from "./../../assets/rocket.svg";
 import Plane from "./../../assets/plane.svg";
+import { format } from "date-fns/esm";
 export const NewBlog = ({ isAuth }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -23,6 +24,16 @@ export const NewBlog = ({ isAuth }) => {
     event.preventDefault();
     if (title === "") return;
     if (text === "") return;
+    let specialDate = new Date();
+    const dtfUS = new Intl.DateTimeFormat("en", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    console.log(dtfUS.format(specialDate));
     // if (imgUrl === null) return;
     // const storageRef = ref(storage(selectedFile.name));
     const postCollectionRef = collection(db, "posts");
@@ -33,7 +44,8 @@ export const NewBlog = ({ isAuth }) => {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      createdAt: Date.now(),
+      createdAt: new Date(),
+      postTime: dtfUS.format(specialDate),
       // image: imgUrl,
     });
     navigate("/");

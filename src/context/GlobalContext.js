@@ -1,10 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
+export const useGlobalContext = () => useContext(GlobalContext);
+
 export const ContextAPI = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   return (
-    <GlobalContext.Provider value={(isAuthenticated, setIsAuthenticated)}>
+    <GlobalContext.Provider value={(isAuth, setIsAuth)}>
       {children}
     </GlobalContext.Provider>
   );
