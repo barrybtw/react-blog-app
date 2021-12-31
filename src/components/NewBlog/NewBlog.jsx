@@ -1,9 +1,8 @@
 import { addDoc, collection, orderBy } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./newblog.scss";
-import { auth, db } from "../../firebase/config";
+import { auth, db, storage } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
-import { projectStorage } from "../../firebase/config";
 import { GrNote } from "react-icons/gr";
 //ASSETS
 import Rocket from "./../../assets/rocket.svg";
@@ -26,7 +25,7 @@ export const NewBlog = ({ isAuth }) => {
     if (text === "") return;
     if (imgUrl === null) return;
 
-    const storageRef = projectStorage.ref(selectedFile.name);
+    const storageRef = storage.ref(selectedFile.name);
     const postCollectionRef = collection(db, "posts");
     const url = await storageRef.getDownloadURL();
     setImgUrl(url);
