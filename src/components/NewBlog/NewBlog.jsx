@@ -19,6 +19,8 @@ export const NewBlog = ({ isAuth }) => {
   // const [imgUrl, setImgUrl] = useState(null);
   const navigate = useNavigate();
 
+  console.log(auth.currentUser.uid);
+
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
@@ -31,7 +33,6 @@ export const NewBlog = ({ isAuth }) => {
       day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
     });
     console.log(dtfUS.format(specialDate));
     // if (imgUrl === null) return;

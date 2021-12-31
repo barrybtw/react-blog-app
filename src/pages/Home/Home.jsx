@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, query, orderBy } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { format, getDay } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
-  const { isAuth, setIsAuth } = useGlobalContext();
+export const Home = ({ isAuth }) => {
   const [postLists, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const postsCollectionRef = collection(db, "posts");
@@ -22,8 +29,14 @@ export const Home = () => {
 
     getPosts();
   }, []);
+  const navigate = useNavigate();
   const date = new Date();
   const now = format(date, "(dd,MM,yyyy)");
+  const deletePost = async (id) => {
+    const postDoc = doc(db, "posts", id);
+    await deleteDoc(postDoc);
+    window.location.reload();
+  };
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
@@ -32,6 +45,7 @@ export const Home = () => {
         <h1>Welcome to Cabin!</h1>
       )}
       {postLists.map((post) => {
+        console.log(post.author.id);
         return (
           <div className="blog__container" key={post.id}>
             <div className="blog__content">
@@ -43,6 +57,17 @@ export const Home = () => {
               <div className="postMetaInfo">
                 <h6 className="blog__author">@ {post.author.name}</h6>
                 <h6>Posted {post.postTime}</h6>
+                {isAuth && post.author.id === auth.currentUser.uid && (
+                  <div className="deletePost">
+                    <button
+                      onClick={() => {
+                        deletePost(post.id);
+                      }}
+                    >
+                      Delete post
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -54,15 +79,19 @@ export const Home = () => {
   return (
     <div className="home__container">
       {isLoading ? (
-        <div className="middle">
-          <div className="bar bar1"></div>
-          <div className="bar bar2"></div>
-          <div className="bar bar3"></div>
-          <div className="bar bar4"></div>
-          <div className="bar bar5"></div>
-          <div className="bar bar6"></div>
-          <div className="bar bar7"></div>
-          <div className="bar bar8"></div>
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       ) : (
         <RenderPosts />
