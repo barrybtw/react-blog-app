@@ -65,5 +65,11 @@
   .blog__content {
     background-color: gray;
     padding: 1rem;
+    width: 100%;
+    max-width: 200px;
   }
+}
+
+.home__post--img {
+  width: 100px;
 }

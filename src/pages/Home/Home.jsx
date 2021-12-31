@@ -26,6 +26,7 @@ export const Home = ({ isAuth }) => {
           <div className="blog__container" key={Math.random() * 100000}>
             <div className="blog__content">
               <h1>{post.title}</h1>
+              <img className="home__post--img" src={post.image} alt="" />
               <div className="postTextContainer">{post.post} </div>
               <h6 className="blog__author">@{post.author.name}</h6>
             </div>
