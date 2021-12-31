@@ -37,7 +37,7 @@ export const Home = ({ isAuth }) => {
       {isAuth ? (
         <div className="welcome__back-div">
           <h1 className="welcome__back">
-            Welcome back {auth.currentUser.displayName}
+            Welcome {auth.currentUser.displayName}
           </h1>
           <img src={Campfire} alt="" className="welcome__back-img" />
         </div>
