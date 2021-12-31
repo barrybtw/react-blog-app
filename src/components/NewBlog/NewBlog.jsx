@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./newblog.scss";
-import { auth, db, storage } from "../../firebase/config";
+import { auth, db, projectStorage } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { GrNote } from "react-icons/gr";
 //ASSETS
@@ -26,6 +26,9 @@ export const NewBlog = ({ isAuth }) => {
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
+    const uploadPath = `selectedfiles/${auth.currentUser.uid}/${selectedFile.name}`;
+    const img = await projectStorage.ref(uploadPath).put(selectedFile);
+    const imgUrl = await img.ref.getDownloadURL();
     if (title === "") return;
     if (text === "") return;
     let specialDate = new Date();
@@ -42,6 +45,7 @@ export const NewBlog = ({ isAuth }) => {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      url: imgUrl,
       createdAt: new Date(),
       postTime: dtfUS.format(specialDate),
     });
