@@ -17,16 +17,24 @@ export const Home = ({ isAuth }) => {
 
     getPosts();
   }, []);
-
+  let count = 1;
   const RenderPosts = () => (
     <div className="home-blog__list">
+      {isAuth ? (
+        <h1>Welcome back {auth.currentUser.displayName}!</h1>
+      ) : (
+        <h1>Welcome to Cabin!</h1>
+      )}
       {postLists.map((post) => {
-        console.log(post);
+        console.log(count);
+        count++;
         return (
-          <div className="blog__container" key={Math.random() * 100000}>
+          <div className="blog__container" key={post.id}>
             <div className="blog__content">
               <h1>{post.title}</h1>
-              <img className="home__post--img" src={post.image} alt="" />
+              {post.image && (
+                <img className="home__post--img" src={post.image} alt="" />
+              )}
               <div className="postTextContainer">{post.post} </div>
               <h6 className="blog__author">@{post.author.name}</h6>
             </div>
@@ -37,8 +45,7 @@ export const Home = ({ isAuth }) => {
   );
 
   return (
-    <div>
-      <h1>Homepage</h1>
+    <div className="home__container">
       {isLoading ? (
         <div className="middle">
           <div className="bar bar1"></div>

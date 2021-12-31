@@ -25,15 +25,16 @@ export const NewBlog = ({ isAuth }) => {
     if (title === "") return;
     if (text === "") return;
 
-    const storageRef = projectStorage.ref(selectedFile.name);
+    //const storageRef = projectStorage.ref(selectedFile.name);
     const postCollectionRef = collection(db, "posts");
-    const url = await storageRef.getDownloadURL();
-    setUrl(url);
+    //const url = await storageRef.getDownloadURL();
+    //setUrl(url);
     await addDoc(postCollectionRef, {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      image: url,
+      createdAt: new Date(),
+      //image: url,
     });
     navigate("/");
   };
