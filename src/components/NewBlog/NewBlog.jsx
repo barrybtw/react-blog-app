@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, orderBy } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./newblog.scss";
 import { auth, db } from "../../firebase/config";
@@ -33,7 +33,7 @@ export const NewBlog = ({ isAuth }) => {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      createdAt: Date.now(),
+      createdAt: new Date(),
       //image: url,
     });
     navigate("/");

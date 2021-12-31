@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
-import { orderBy, query } from "firebase/firestore";
 import "./custom.scss";
 
 export const Home = ({ isAuth }) => {
@@ -19,7 +18,6 @@ export const Home = ({ isAuth }) => {
 
     getPosts();
   }, []);
-  let count = 1;
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
