@@ -11,7 +11,7 @@ export const Home = ({ isAuth }) => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = query(postsCollectionRef);
+      const data = await getDocs(postsCollectionRef);
       console.log(data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);
