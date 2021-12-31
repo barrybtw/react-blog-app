@@ -2,7 +2,7 @@
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getStorage } from 'firebase/storage'
+import { getStorage, ref, uploadBytes } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,4 +22,13 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const provider = new GoogleAuthProvider();
 export const auth = getAuth();
 export const db = getFirestore();
-export const projectStorage = getStorage(firebaseApp);
+const storage = getStorage(firebaseApp);
+
+export async function upload(file, currentUser, setLoading) {
+  const fileRef = ref(storage, currentUser.uid + '.png');
+
+  setLoading(true);
+  const snapshot = await uploadBytes(fileRef, file);
+  setLoading(false);
+  console.log("Uploaded file")
+}
