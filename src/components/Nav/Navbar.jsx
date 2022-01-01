@@ -1,5 +1,5 @@
 import "./nav.scss";
-import { auth, provider } from "../../firebase/config";
+import { auth, provider, saveUser } from "../../firebase/config";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
@@ -14,7 +14,8 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
     setTimer(true);
 
     signInWithPopup(auth, provider).then((res) => {
-      console.log(res.user);
+      console.log(res);
+      saveUser(res);
       // Setting isAuth to true if login process was a success
       setIsAuth(true);
       // Setting isAuth item in localstorage to true to remember user on reload
