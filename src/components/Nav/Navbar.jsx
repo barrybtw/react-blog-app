@@ -34,7 +34,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
         <Link to="/">
           <img
             id="personal-logo"
-            src="https://www.onblastblog.com/wp-content/uploads/2017/08/blogger-logo.jpg"
+            src="https://brandmark.io/logo-rank/random/beats.png"
             alt=""
           />
         </Link>
