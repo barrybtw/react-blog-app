@@ -50,13 +50,18 @@ export const saveUser = async (res) => {
     "EMAIL",
     userMail
   );
-  await addDoc(userRef, {
-    userID: uid,
-    userName: displayName,
-    photoURL: photoUrl,
-    biography: "",
-    userMail: userMail,
-  });
+  await addDoc(
+    userRef,
+    {
+      userID: uid,
+      userName: displayName,
+      photoURL: photoUrl,
+      biography: "",
+      userMail: userMail,
+    },
+    uid,
+    uid
+  );
 };
 
 export const getPhoto = async (id) => {
