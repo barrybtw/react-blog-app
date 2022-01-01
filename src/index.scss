@@ -39,6 +39,12 @@ button {
   #personal-logo {
     display: none;
   }
+  .nav__link--anchor {
+    margin: 0 20px;
+  }
+  .nav__link--anchor-primary {
+    font-size: 10px !important;
+  }
 }
 
 @media (max-width: 550px) {
