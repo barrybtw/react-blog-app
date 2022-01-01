@@ -1,7 +1,8 @@
 import "./menu.scss";
-import { FiSettings } from "react-icons/fi"
-import { CgProfile } from "react-icons/cg"
+import { FiSettings } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 import { auth } from "../../firebase/config";
+import { FaBeer } from "react-icons/fa";
 
 export const Menu = () => {
     console.log(auth.currentUser.photoURL)
