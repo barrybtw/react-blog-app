@@ -6,14 +6,13 @@ import { FaBeer } from "react-icons/fa";
 
 export const Menu = ({ isAuth }) => {
   if (isAuth) {
-    console.log(auth.currentUser.photoURL);
+    console.log(auth.currentUser);
   }
 
   return (
     <div className="menu__container">
       <button className="menu__buttons">
-        {isAuth ? <img src={auth.currentUser.photoURL} alt="" /> : <FaBeer />}
-        <img src={auth.currentUser.photoURL} alt="" />
+        {isAuth ? <img src={auth.currentUser} alt="" /> : <FaBeer />}
       </button>
       <div className="menu__button--list-wrapper">
         <ul className="menu__button--list">
