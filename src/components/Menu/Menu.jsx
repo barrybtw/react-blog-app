@@ -4,18 +4,18 @@ import { CgProfile } from "react-icons/cg";
 import { auth } from "../../firebase/config";
 import { FaBeer } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 export const Menu = ({ isAuth }) => {
   let profilePhoto = auth.currentUser?.providerData[0].photoURL;
-  const [active, setActive] = useState(false);
+  console.log(profilePhoto)
 
-  const handleClick = (e) => {
-      setActive(!active)
+  const toggleWrapper = () => {
+      console.log("CLICK");
   }
+
   return (
     <div className="menu__container">
-      <button className="menu__buttons" onClick={handleClick}>
+      <button className="menu__buttons" onClick={toggleWrapper}>
         {isAuth ? (
           <img className="profile__photo" src={profilePhoto} alt="" />
         ) : (

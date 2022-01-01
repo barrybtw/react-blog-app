@@ -43,6 +43,10 @@
   border-radius: 50%;
 }
 
+.profile__photo:hover .menu__button--list-wrapper{
+    display: flex;
+}
+
 .menu__button--item {
   display: flex;
   align-items: center;
