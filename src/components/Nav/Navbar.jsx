@@ -14,6 +14,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
     setTimer(true);
 
     signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
       // Setting isAuth to true if login process was a success
       setIsAuth(true);
       // Setting isAuth item in localstorage to true to remember user on reload
