@@ -27,11 +27,7 @@ export const NewBlog = ({ isAuth }) => {
   const createPost = async (event) => {
     event.preventDefault();
     upload(selectedFile, auth.currentUser);
-    console.log(auth.currentUser.photoURL)
-    if (isAuth !== true) {
-      navigate("/");
-      return;
-    }
+    console.log(auth.currentUser.photoURL);
     if (title === "") return;
     if (text === "") return;
     let specialDate = new Date();
