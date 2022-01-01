@@ -32,6 +32,8 @@ function uuidv4() {
 export const NewBlog = () => {
   const [progress, setProgress] = useState(0);
   const [isDisabled, setIsDisabled] = useState(0);
+  const [isMissingContent, setIsMissingContent] = useState(false);
+  const [isMissingTitle, setIsMissingTitle] = useState(false);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
