@@ -55,13 +55,13 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
         {/* Blog button */}
         <li className="nav__link">
           <Link
-            to="/posts"
+            to="/profile"
             className="
               nav__link--anchor
               link__hover-effect
               link__hover-effect--black"
           >
-            Blog
+            My Profile
           </Link>
         </li>
         {/* If logged in, create blog button, else nothing, aka. conditional render */}

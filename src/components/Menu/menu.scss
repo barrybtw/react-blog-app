@@ -1,0 +1,42 @@
+.menu__buttons {
+    animation: none;
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    background-color: #242424;
+    color: white;
+    position: fixed;
+    bottom: 32px;
+    right: 40px;
+    z-index: 100;
+    box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.28);
+}
+
+.menu__button--list {
+    color: #242424;
+    border-radius: 10px;
+    list-style-type: none;
+    width: 190px;
+    height: 200px;
+    padding: 0;
+    padding: 15px;
+    position: absolute;
+    right: 45px;
+    bottom: 55px;
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: all .2s;
+}
+
+.menu__button--item {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+}
+
