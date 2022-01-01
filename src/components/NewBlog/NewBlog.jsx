@@ -11,7 +11,6 @@ export const NewBlog = ({ isAuth }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
   // Allowed file types
   const types = ["image/png", "image/jpeg"];
   // error if not correct file type
@@ -27,7 +26,8 @@ export const NewBlog = ({ isAuth }) => {
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
-    // upload(selectedFile, auth.currentUser);
+    upload(selectedFile, auth.currentUser);
+    console.log(auth.currentUser.photoURL)
     if (isAuth !== true) {
       navigate("/");
       return;
@@ -48,6 +48,7 @@ export const NewBlog = ({ isAuth }) => {
       title,
       post: text,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      image: auth.currentUser.photoURL,
       createdAt: new Date(),
       postTime: dtfUS.format(specialDate),
     });
@@ -58,7 +59,7 @@ export const NewBlog = ({ isAuth }) => {
   const fileSelectedHandler = (event) => {
     let selected = event.target.files[0];
     if (selected && types.includes(selected.type)) {
-      setSelectedFile(event.target.files[0]);
+      setSelectedFile(selected);
       setError("");
     } else {
       setSelectedFile(null);
