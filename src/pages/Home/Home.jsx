@@ -21,12 +21,13 @@ export const Home = ({ isAuth }) => {
       const data = await getDocs(
         query(postsCollectionRef, orderBy("createdAt", "desc"))
       );
+      console.log(data.docs);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);
     };
-
     getPosts();
   }, []);
+
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
@@ -47,6 +48,7 @@ export const Home = ({ isAuth }) => {
           <img src={Campfire} alt="" className="welcome__back-img" />
         </div>
       )}
+      {/* Mapping */}
       {postLists.map((post) => {
         return (
           <div className="blog__container" key={post.id}>
