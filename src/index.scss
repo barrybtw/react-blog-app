@@ -35,6 +35,12 @@ button {
   cursor: pointer;
 }
 
+@media screen and (max-width: 720px) {
+  #personal-logo {
+    display: none;
+  }
+}
+
 @media (max-width: 550px) {
   .postMetaInfo {
     flex-direction: column;
@@ -111,7 +117,11 @@ button {
     border-radius: 0 !important;
     z-index: -1;
     width: 100%;
+    margin-top: -0.5rem !important;
+    position: static !important;
     font-size: 14px;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
   }
   .form__missing-content {
     bottom: -1.6rem !important;
