@@ -23,7 +23,7 @@ export const App = () => {
   return (
     <Router>
       <Navbar isAuth={isAuth} setIsAuth={setIsAuth} signUserOut={signUserOut} />
-      <Menu />
+      <Menu isAuth={isAuth} />
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
