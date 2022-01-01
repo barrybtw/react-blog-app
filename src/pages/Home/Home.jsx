@@ -7,7 +7,6 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 import Campfire from "./../../assets/campfire.png";
@@ -33,7 +32,6 @@ export const Home = ({ isAuth }) => {
     await deleteDoc(postDoc);
     window.location.reload();
   };
-  const navigate = useNavigate();
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
@@ -51,15 +49,13 @@ export const Home = ({ isAuth }) => {
       )}
       {postLists.map((post) => {
         return (
-          <div
-            className="blog__container"
-            key={post.id}
-            onClick={() => navigate(`/blog/${post.id}`)}
-          >
+          <div className="blog__container" key={post.id}>
             <div className="blog__content">
               <h1>{post.title}</h1>
               {post.image && (
-                <img className="home__post--img" src={post.image} alt="" />
+                <div className="blog__post-picture--mask">
+                  <img className="home__post--img" src={post.image} alt="" />
+                </div>
               )}
               <div className="postTextContainer">{post.post} </div>
               <div className="postMetaInfo">

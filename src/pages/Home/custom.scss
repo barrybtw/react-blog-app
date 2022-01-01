@@ -298,5 +298,28 @@
   justify-content: center;
   margin-bottom: 1rem;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 1rem;
+}
+
+.blog__post-picture--mask {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.16);
+    margin-bottom: 28px;
+    animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+@keyframes animate-profile-picture {
+  0% {
+      transform: scale(0);
+  }
+  80% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
 }

@@ -33,3 +33,16 @@ a {
 button {
   cursor: pointer;
 }
+
+@media (max-width: 550px) {
+  .postMetaInfo {
+    flex-direction: column;
+  }
+
+  .blog__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
