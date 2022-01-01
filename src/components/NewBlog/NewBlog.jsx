@@ -26,6 +26,7 @@ export const NewBlog = ({ isAuth }) => {
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
+    setIsDisabled(true);
     if (selectedFile !== null) upload(selectedFile, auth.currentUser);
     console.log("Selected:" + selectedFile);
     console.log(auth.currentUser.photoURL);
