@@ -37,49 +37,6 @@ export const NewBlog = () => {
       const storageRef = ref(storage, `/files/${file.name}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-<<<<<<< HEAD
-  // Create a new post
-  const createPost = async (event) => {
-    event.preventDefault();
-    upload(selectedFile, auth.currentUser);
-    console.log(auth.currentUser.photoURL)
-    if (isAuth !== true) {
-      navigate("/");
-      return;
-    }
-    if (title === "") return;
-    if (text === "") return;
-    let specialDate = new Date();
-    const dtfUS = new Intl.DateTimeFormat("en", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    console.log(dtfUS.format(specialDate));
-    const postCollectionRef = collection(db, "posts");
-    await addDoc(postCollectionRef, {
-      title,
-      post: text,
-      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      image: auth.currentUser.photoURL,
-      createdAt: new Date(),
-      postTime: dtfUS.format(specialDate),
-    });
-    navigate("/");
-  };
-
-  //Recive and store file uploaded by user
-  const fileSelectedHandler = (event) => {
-    let selected = event.target.files[0];
-    if (selected && types.includes(selected.type)) {
-      setSelectedFile(selected);
-      setError("");
-    } else {
-      setSelectedFile(null);
-      setError("Please select an image file type (png or jpeg)");
-=======
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -124,7 +81,6 @@ export const NewBlog = () => {
         createdAt: new Date(),
         postTime: dtfUS.format(specialDate),
       });
->>>>>>> 16d2c5795bc4deac08e3f0c374a61cea753e38a8
     }
   };
   return (
