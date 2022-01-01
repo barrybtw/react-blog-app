@@ -26,7 +26,8 @@ export const NewBlog = ({ isAuth }) => {
   // Create a new post
   const createPost = async (event) => {
     event.preventDefault();
-    upload(selectedFile, auth.currentUser);
+    if (selectedFile !== null) upload(selectedFile, auth.currentUser);
+    console.log("Selected:" + selectedFile);
     console.log(auth.currentUser.photoURL);
     if (title === "") return;
     if (text === "") return;
@@ -40,15 +41,32 @@ export const NewBlog = ({ isAuth }) => {
     });
     console.log(dtfUS.format(specialDate));
     const postCollectionRef = collection(db, "posts");
-    await addDoc(postCollectionRef, {
-      title,
-      post: text,
-      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      image: auth.currentUser.photoURL,
-      createdAt: new Date(),
-      postTime: dtfUS.format(specialDate),
-    });
-    navigate("/");
+    if (selectedFile === null) {
+      await addDoc(postCollectionRef, {
+        title,
+        post: text,
+        author: {
+          name: auth.currentUser.displayName,
+          id: auth.currentUser.uid,
+        },
+        createdAt: new Date(),
+        postTime: dtfUS.format(specialDate),
+      });
+      navigate("/");
+    } else {
+      await addDoc(postCollectionRef, {
+        title,
+        post: text,
+        author: {
+          name: auth.currentUser.displayName,
+          id: auth.currentUser.uid,
+        },
+        image: auth.currentUser.photoURL,
+        createdAt: new Date(),
+        postTime: dtfUS.format(specialDate),
+      });
+      navigate("/");
+    }
   };
 
   //Recive and store file uploaded by user
