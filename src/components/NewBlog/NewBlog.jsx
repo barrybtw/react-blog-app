@@ -27,14 +27,11 @@ export const NewBlog = () => {
   const formHandler = (e) => {
     e.preventDefault();
     const file = e.target[2].files[0];
-    console.log("filefilefile");
-    console.log(file);
     uploadFile(file);
   };
   const uploadFile = (file) => {
     if (!file) {
       createNewBlog("", title, desc);
-      console.log("bich");
       return;
     } else {
       const storageRef = ref(storage, `/files/${file.name}`);
@@ -50,12 +47,9 @@ export const NewBlog = () => {
         },
         (err) => {
           console.log(err);
-          console.log("wtf");
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            console.log(url);
-            console.log("ayy");
             createNewBlog(url, title, desc);
           });
         }
@@ -65,7 +59,6 @@ export const NewBlog = () => {
   const createNewBlog = async (url, title, desc) => {
     const postCollectionRef = collection(db, "posts");
     if (url === null) {
-      console.log("also worksdsadsdsadasdasdsa");
       await addDoc(postCollectionRef, {
         title,
         post: desc,
@@ -77,7 +70,6 @@ export const NewBlog = () => {
         postTime: dtfUS.format(specialDate),
       });
     } else {
-      console.log("gets here");
       await addDoc(postCollectionRef, {
         title,
         post: desc,
