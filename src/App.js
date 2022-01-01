@@ -8,7 +8,10 @@ import { auth } from "./firebase/config";
 import { NewBlog } from "./components/NewBlog/NewBlog";
 import { User } from "./pages/User/User";
 import { Menu } from "./components/Menu/Menu";
-
+import { getPhoto } from "./firebase/config";
+export const getPhotoFromId = async (id) => {
+  const DOC = await getPhoto(id);
+};
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   console.log(isAuth);
@@ -28,6 +31,7 @@ export const App = () => {
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         <Route path="profile" element={<User />} />
+        <Route path="user/:id" element={<Profile />} />
       </Routes>
     </Router>
   );

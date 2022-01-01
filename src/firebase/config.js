@@ -5,6 +5,10 @@ import {
   collection,
   addDoc,
   Timestamp,
+  getDoc,
+  where,
+  getDocs,
+  doc,
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
@@ -51,5 +55,12 @@ export const saveUser = async (res) => {
     photoURL: photoUrl,
     biography: "",
     userMail: userMail,
+  });
+};
+
+export const getPhoto = async (id) => {
+  const userRef = doc(db, `users/${id}`);
+  getDoc(userRef).then((doc) => {
+    console.log(doc.data(), doc.data().photoURL);
   });
 };
