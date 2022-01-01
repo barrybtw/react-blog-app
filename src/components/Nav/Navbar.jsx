@@ -89,7 +89,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
             {/* Conditional renders start */}
             {isAuth ? (
               <button
-                className="nav__link--anchor-primary nav__login"
+                className="nav__link--anchor-primary nav__login click"
                 onClick={(event) => {
                   event.preventDefault();
                   navigate("/");
@@ -100,7 +100,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
               </button>
             ) : (
               <button
-                className="nav__link--anchor-primary nav__logout"
+                className="nav__link--anchor-primary nav__logout click"
                 onClick={(e) => {
                   e.preventDefault();
                   signInWithGoogle();
