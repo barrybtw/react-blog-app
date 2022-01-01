@@ -13,20 +13,16 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
     setTimer(true);
 
     signInWithPopup(auth, provider).then((res) => {
-      console.log(isAuth);
       setIsAuth(true);
       localStorage.setItem("isAuth", true);
 
       navigate("/");
-
-      console.log(res);
     });
 
     setTimeout(() => {
       setTimer(false);
     }, 1000);
   };
-  console.log(isAuth);
   return (
     <nav>
       <figure>
@@ -85,6 +81,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                 className="nav__link--anchor-primary nav__login"
                 onClick={(event) => {
                   event.preventDefault();
+                  navigate("/");
                   signUserOut();
                 }}
               >

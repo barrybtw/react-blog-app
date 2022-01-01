@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, doc, where } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import { getDoc, query } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 export const Blog = () => {
   const { blogid } = useParams();
