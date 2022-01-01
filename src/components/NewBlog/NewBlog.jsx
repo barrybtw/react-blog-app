@@ -34,6 +34,7 @@ export const NewBlog = () => {
   const [isDisabled, setIsDisabled] = useState(0);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
   const navigate = useNavigate();
   const formHandler = (e) => {
     e.preventDefault();
@@ -99,6 +100,11 @@ export const NewBlog = () => {
     }
     navigate("/");
   };
+
+  const handleChange = (e) => {
+    let selected = e.target.files[0];
+    setFile(selected);
+  }
   return (
     <div className="new__blog--container">
       <img
@@ -136,8 +142,15 @@ export const NewBlog = () => {
         </div>
         <div className="new__blog--form-field">
           <label htmlFor="text">Upload Image</label>
-          <input type="file" required={false} />
-          <div className="newBlog__output"></div>
+          <div className="new__blog--form-wrapper">
+            <label className="new__blog--label">
+              <input type="file" required={false} onChange={handleChange} hidden />
+              <span className="new__blog--custom-btn">Choose Image</span>
+            </label>
+            <div className="new__blog--output">
+              {file && <div>{file.name}</div>}
+            </div>
+          </div>
         </div>
         <button
           type="submit"
