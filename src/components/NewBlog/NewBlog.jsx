@@ -10,7 +10,7 @@ import Plane from "./../../assets/plane.svg";
 import { GrNote } from "react-icons/gr";
 
 import "./newblog.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 let specialDate = new Date();
 const dtfUS = new Intl.DateTimeFormat("en", {
   year: "numeric",
