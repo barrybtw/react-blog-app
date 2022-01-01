@@ -6,7 +6,7 @@ import { Navbar } from "./components/Nav/Navbar";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { NewBlog } from "./components/NewBlog/NewBlog";
-import { User } from "./pages/User/User";
+import { Faq } from "./pages/Faq/Faq";
 import { Menu } from "./components/Menu/Menu";
 import { getPhoto } from "./firebase/config";
 import { Profile } from "./components/Profile/Profile";
@@ -33,9 +33,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
-        <Route path="/profile" element={<User />} />
+        <Route path="/FAQ" element={<Faq />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="user/:id" element={<Profile />} />
+        <Route path="/user/:id" element={<Profile />} />
+        <Route path="/user-profiles" element={<Userlist />} />
       </Routes>
     </Router>
   );

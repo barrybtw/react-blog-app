@@ -1,21 +1,32 @@
 import "./menu.scss";
 import { FiSettings } from "react-icons/fi";
-import { CgProfile } from "react-icons/cg";
-import { FaBeer } from "react-icons/fa";
+import { FaBeer, FaQuestion } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useEffect} from "react";
 
 export const Menu = ({ isAuth }) => {
   const [isActive, setIsActive] = useState(false);
+  const ref = useRef();
 
-  const toggleWrapper = () => {
-    isActive ? setIsActive(false) : setIsActive(true);
-  };
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (isActive && ref.current && !ref.current.contains(e.target)) {
+        setIsActive(false)
+      }
+    }
+    document.addEventListener("mousedown", checkIfClickedOutside)
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+  }, [isActive])
 
   return (
     <div className="menu__container">
       {isAuth && (
-        <button className="menu__buttons click" onClick={toggleWrapper}>
+        <button className="menu__buttons click" onClick={() => setIsActive(true)}>
           {isAuth ? (
             <img
               className="profile__photo"
@@ -28,7 +39,7 @@ export const Menu = ({ isAuth }) => {
         </button>
       )}
       <div className={`menu__button--list-wrapper ${isActive && "active"}`}>
-        <ul className="menu__button--list">
+        <ul className="menu__button--list" ref={ref}>
           <li className="menu__button--item">
             <Link to="/settings">
               <FiSettings />
@@ -36,9 +47,9 @@ export const Menu = ({ isAuth }) => {
             </Link>
           </li>
           <li className="menu__button--item">
-            <Link to="/profile">
-              <CgProfile />
-              <span className="menu__button--item-name">Profile</span>
+            <Link to="/FAQ">
+              <FaQuestion />
+              <span className="menu__button--item-name">FAQ</span>
             </Link>
           </li>
         </ul>
