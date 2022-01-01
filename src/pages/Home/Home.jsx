@@ -48,7 +48,6 @@ export const Home = ({ isAuth }) => {
         </div>
       )}
       {postLists.map((post) => {
-        console.log(post.author.id);
         return (
           <div className="blog__container" key={post.id}>
             <div className="blog__content">
