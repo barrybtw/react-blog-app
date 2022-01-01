@@ -1,5 +1,8 @@
+.menu__container {
+    position: relative;
+}
+
 .menu__buttons {
-    animation: none;
     width: 70px;
     height: 70px;
     font-size: 32px;
@@ -15,28 +18,33 @@
     right: 40px;
     z-index: 100;
     box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.28);
+    animation: bloom infinite 1.5s;
 }
 
-.menu__button--list {
-    color: #242424;
-    border-radius: 10px;
-    list-style-type: none;
-    width: 190px;
-    height: 200px;
-    padding: 0;
-    padding: 15px;
-    position: absolute;
-    right: 45px;
-    bottom: 55px;
-    opacity: 1;
-    transform: scale(0);
-    transform-origin: bottom right;
-    transition: all .2s;
+@keyframes bloom {
+    50% {
+        box-shadow: 0px 0px 0px 15px rgba(92, 217, 255, 0.3);
+    }
+}
+
+.menu__button--list-wrapper {
+    position: fixed;
+    bottom: 70px;
+    right: 90px;
+    padding: 100px 50px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 5px;
 }
 
 .menu__button--item {
-    opacity: 0;
     display: flex;
-    align-items: center;
+    margin-bottom: 5px;
 }
 
+.menu__button--item-name {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 20px;
+    margin-left: 10px;
+    color: rgb(104, 104, 104);
+}
