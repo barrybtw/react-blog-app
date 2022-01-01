@@ -10,7 +10,8 @@ import { Faq } from "./pages/Faq/Faq";
 import { Menu } from "./components/Menu/Menu";
 import { getPhoto } from "./firebase/config";
 import { Profile } from "./components/Profile/Profile";
-import { Settings } from "./pages/Settings/Settings"
+import { Settings } from "./pages/Settings/Settings";
+import { Userlist } from "./components/Userlist/Userlist";
 export const getPhotoFromId = async (id) => {
   const DOC = await getPhoto(id);
 };
@@ -35,6 +36,7 @@ export const App = () => {
         <Route path="/FAQ" element={<Faq />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/user/:id" element={<Profile />} />
+        <Route path="/user-profiles" element={<Userlist />} />
       </Routes>
     </Router>
   );
