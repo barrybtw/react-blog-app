@@ -1,6 +1,7 @@
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase/config";
+import {} from "firebase/firestore";
 
 export const Userlist = () => {
   const [users, setUsers] = useState([]);
@@ -17,7 +18,18 @@ export const Userlist = () => {
   return (
     <div>
       <h1>fasfsfdsaddsad</h1>
-      {users && <h1>Loaded</h1>}
+      {users && (
+        <>
+          {users.map((user) => {
+            console.log(user.userName);
+            return (
+              <div key={user.id}>
+                <h1>USER: {user ? user.userName : "hi"}</h1>
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
