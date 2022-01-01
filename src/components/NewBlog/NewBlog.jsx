@@ -1,51 +1,74 @@
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "./../../firebase/config";
+import { auth } from "../../firebase/config";
+import { db } from "../../firebase/config";
+
+import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import "./newblog.scss";
-import { auth, db, upload } from "../../firebase/config";
-import { useNavigate } from "react-router-dom";
-import { GrNote } from "react-icons/gr";
-//ASSETS
 import Rocket from "./../../assets/rocket.svg";
 import Plane from "./../../assets/plane.svg";
-export const NewBlog = ({ isAuth }) => {
+import { GrNote } from "react-icons/gr";
+
+import "./newblog.scss";
+let specialDate = new Date();
+const dtfUS = new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+export const NewBlog = () => {
+  const [progress, setProgress] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(0);
   const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
-  // Allowed file types
-  const types = ["image/png", "image/jpeg"];
-  // error if not correct file type
-  const [error, setError] = useState(null);
-  const [isDisabled, setIsDisabled] = useState(null);
-  const navigate = useNavigate();
+  const [desc, setDesc] = useState("");
+  const formHandler = (e) => {
+    e.preventDefault();
+    const file = e.target[2].files[0];
+    console.log("filefilefile");
+    console.log(file);
+    uploadFile(file);
+  };
+  const uploadFile = (file) => {
+    if (!file) {
+      createNewBlog("", title, desc);
+      console.log("bich");
+      return;
+    } else {
+      const storageRef = ref(storage, `/files/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-  useEffect(() => {
-    if (isAuth) return;
-    navigate("/");
-  }, []);
-
-  // Create a new post
-  const createPost = async (event) => {
-    event.preventDefault();
-    setIsDisabled(true);
-    if (selectedFile !== null) upload(selectedFile, auth.currentUser);
-    console.log("Selected:" + selectedFile);
-    console.log(auth.currentUser.photoURL);
-    if (title === "") return;
-    if (text === "") return;
-    let specialDate = new Date();
-    const dtfUS = new Intl.DateTimeFormat("en", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    console.log(dtfUS.format(specialDate));
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const prog = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(prog);
+        },
+        (err) => {
+          console.log(err);
+          console.log("wtf");
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            console.log("ayy");
+            createNewBlog(url, title, desc);
+          });
+        }
+      );
+    }
+  };
+  const createNewBlog = async (url, title, desc) => {
     const postCollectionRef = collection(db, "posts");
-    if (selectedFile === null) {
+    if (url === null) {
+      console.log("also worksdsadsdsadasdasdsa");
       await addDoc(postCollectionRef, {
         title,
-        post: text,
+        post: desc,
         author: {
           name: auth.currentUser.displayName,
           id: auth.currentUser.uid,
@@ -53,37 +76,21 @@ export const NewBlog = ({ isAuth }) => {
         createdAt: new Date(),
         postTime: dtfUS.format(specialDate),
       });
-      navigate("/");
     } else {
+      console.log("gets here");
       await addDoc(postCollectionRef, {
         title,
-        post: text,
+        post: desc,
         author: {
           name: auth.currentUser.displayName,
           id: auth.currentUser.uid,
         },
-        image: auth.currentUser.photoURL,
+        image: url,
         createdAt: new Date(),
         postTime: dtfUS.format(specialDate),
       });
-      navigate("/");
     }
   };
-
-  //Recive and store file uploaded by user
-  const fileSelectedHandler = (event) => {
-    let selected = event.target.files[0];
-    if (selected && types.includes(selected.type)) {
-      setSelectedFile(selected);
-      setError("");
-    } else {
-      setSelectedFile(null);
-      setError("Please select an image file type (png or jpeg)");
-    }
-  };
-
-  // Check if user is logged in
-
   return (
     <div className="new__blog--container">
       <img
@@ -92,7 +99,7 @@ export const NewBlog = ({ isAuth }) => {
         className="absolute_rocket abs"
       />
       <img src={Plane} alt="Plane" className="absolute_plane abs" />
-      <form className="new__blog--form">
+      <form className="new__blog--form" onSubmit={formHandler} id="my-form">
         <h1 className="new__blog--form-title">
           <GrNote />
           <span>New Blog</span>
@@ -116,25 +123,20 @@ export const NewBlog = ({ isAuth }) => {
             id="text"
             className="new__blog--form-input"
             placeholder="Begin typing..."
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           />
         </div>
         <div className="new__blog--form-field">
           <label htmlFor="text">Upload Image</label>
-          <input type="file" required={false} onChange={fileSelectedHandler} />
-          <div className="newBlog__output">
-            {error && <div className="newBlog__output-error">{error}</div>}
-            {selectedFile && (
-              <div className="newBlog__output-filename">
-                {selectedFile.name}
-              </div>
-            )}
-          </div>
+          <input type="file" required={false} />
+          <div className="newBlog__output"></div>
         </div>
         <button
-          onClick={createPost}
+          type="submit"
           disabled={isDisabled}
           className="new__blog--form-submit"
+          form="my-form"
+          id="inputbtn"
         >
           Create Blog
         </button>

@@ -17,12 +17,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 
 export const provider = new GoogleAuthProvider();
 export const auth = getAuth();
 export const db = getFirestore();
-const storage = getStorage(firebaseApp);
+export const storage = getStorage(firebaseApp);
 
 export async function upload(file, currentUser) {
   const fileRef = ref(storage, currentUser.uid);
