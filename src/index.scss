@@ -104,3 +104,20 @@ button {
     }
   }
 }
+
+@media screen and (max-width: 720px) {
+  .form__missing {
+    bottom: -1.6rem !important;
+    border-radius: 0 !important;
+    z-index: -1;
+    width: 100%;
+    font-size: 14px;
+  }
+  .form__missing-content {
+    bottom: -1.6rem !important;
+  }
+  .new__blog--form-input {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
