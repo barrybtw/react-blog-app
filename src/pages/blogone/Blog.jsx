@@ -14,15 +14,17 @@ export const Blog = () => {
   }
   const docRef = doc(db, "posts", blogid);
   useEffect(() => {
-    setBlog(getDoc(docRef).then((doc) => console.log(doc.data(), doc.id)));
+    setBlog(getDoc(docRef).then((doc) => setBlog(doc.data(), doc.id)));
   }, []);
   console.log(blog);
+  const check = Object.entries(blog);
+  console.log("CHECK", check);
   return (
     <div>
       Blog
       {blog !== null && (
         <>
-          <h1>{blog.title}</h1>
+          <h1>{blog}</h1>
         </>
       )}
     </div>
