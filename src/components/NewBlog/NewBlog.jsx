@@ -10,6 +10,7 @@ import Plane from "./../../assets/plane.svg";
 import { GrNote } from "react-icons/gr";
 
 import "./newblog.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 let specialDate = new Date();
 const dtfUS = new Intl.DateTimeFormat("en", {
   year: "numeric",
@@ -24,8 +25,10 @@ export const NewBlog = () => {
   const [isDisabled, setIsDisabled] = useState(0);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const navigate = useNavigate();
   const formHandler = (e) => {
     e.preventDefault();
+    if (title === "" || desc === null) return;
     const file = e.target[2].files[0];
     uploadFile(file);
   };
@@ -58,6 +61,7 @@ export const NewBlog = () => {
   };
   const createNewBlog = async (url, title, desc) => {
     const postCollectionRef = collection(db, "posts");
+    setIsDisabled(true);
     if (url === null) {
       await addDoc(postCollectionRef, {
         title,
@@ -82,6 +86,7 @@ export const NewBlog = () => {
         postTime: dtfUS.format(specialDate),
       });
     }
+    navigate("/");
   };
   return (
     <div className="new__blog--container">
