@@ -34,6 +34,7 @@ export const saveUser = async (res) => {
   const uid = res.user.uid;
   const displayName = res.user.displayName;
   const photoUrl = res.user.providerData[0].photoURL;
+  localStorage.setItem("Photo", photoUrl);
   const userMail = res.user.email;
   console.log(
     "ID",

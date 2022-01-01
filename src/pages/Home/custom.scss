@@ -91,7 +91,8 @@
     border: 1px solid rgba(236, 236, 236, 0.18);
   }
   img {
-    width: 300px;
+    width: 100%;
+    object-fit: contain;
   }
   .blog__content {
     display: flex;
