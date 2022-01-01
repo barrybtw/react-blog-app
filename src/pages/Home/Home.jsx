@@ -7,19 +7,21 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { auth, db } from "../../firebase/config";
+import { auth, db, getPhoto } from "../../firebase/config";
 import "./custom.scss";
 import Campfire from "./../../assets/campfire.png";
+import { getPhotoFromId } from "./../../App";
 
 export const Home = ({ isAuth }) => {
   const [postLists, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const postsCollectionRef = collection(db, "posts");
-
+  const document = getPhotoFromId("HXjwoPT7IebGbXVqZ3zZ");
+  console.log("KEYS", document.userName);
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(
-        query(postsCollectionRef, orderBy("createdAt", "desc"))
+        query(query(postsCollectionRef, orderBy("createdAt", "desc")))
       );
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setIsLoading(false);

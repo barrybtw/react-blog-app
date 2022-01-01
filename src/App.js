@@ -28,8 +28,13 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
+<<<<<<< HEAD
         <Route path="/profile" element={<User />} />
         <Route path="/settings" element={<Settings />} />
+=======
+        <Route path="profile" element={<User />} />
+        <Route path="user/:id" element={<Profile />} />
+>>>>>>> 419be32ac04c1fb011239fce4ef4ad57ae41d92c
       </Routes>
     </Router>
   );
