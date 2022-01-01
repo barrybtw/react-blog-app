@@ -15,7 +15,7 @@ export const Menu = ({ isAuth }) => {
   return (
     <div className="menu__container">
       {isAuth && (
-        <button className="menu__buttons" onClick={toggleWrapper}>
+        <button className="menu__buttons click" onClick={toggleWrapper}>
           {isAuth ? (
             <img
               className="profile__photo"

@@ -198,7 +198,7 @@ export const NewBlog = () => {
         <button
           type="submit"
           disabled={isDisabled}
-          className="new__blog--form-submit"
+          className="new__blog--form-submit click"
           form="my-form"
           id="inputbtn"
         >
