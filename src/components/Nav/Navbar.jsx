@@ -24,7 +24,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
     }, 1000);
   };
   return (
-    <nav>
+    <nav className="nav__bar">
       <figure>
         <Link to="/">
           <img
