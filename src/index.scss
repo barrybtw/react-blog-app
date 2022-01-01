@@ -35,6 +35,19 @@ button {
   cursor: pointer;
 }
 
+.click {
+  cursor: pointer;
+  transition: all 300ms ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.8);
+  }
+}
+
 @media screen and (max-width: 720px) {
   #personal-logo {
     display: none;

@@ -8,6 +8,7 @@ import { auth } from "./firebase/config";
 import { NewBlog } from "./components/NewBlog/NewBlog";
 import { User } from "./pages/User/User";
 import { Menu } from "./components/Menu/Menu";
+import { Settings } from "./pages/Settings/Settings";
 
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -27,7 +28,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
-        <Route path="profile" element={<User />} />
+        <Route path="/profile" element={<User />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );
