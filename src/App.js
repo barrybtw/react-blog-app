@@ -9,6 +9,8 @@ import { NewBlog } from "./components/NewBlog/NewBlog";
 import { User } from "./pages/User/User";
 import { Menu } from "./components/Menu/Menu";
 import { getPhoto } from "./firebase/config";
+import { Profile } from "./components/Profile/Profile";
+import { Userlist } from "./components/Userlist/Userlist";
 export const getPhotoFromId = async (id) => {
   const DOC = await getPhoto(id);
 };
@@ -32,7 +34,7 @@ export const App = () => {
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         <Route path="profile" element={<User />} />
         <Route path="user/:id" element={<Profile />} />
-        <Route path="users" element={<Usersite />} />
+        <Route path="users" element={<Userlist />} />
       </Routes>
     </Router>
   );
