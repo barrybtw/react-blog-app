@@ -11,6 +11,7 @@ import { Menu } from "./components/Menu/Menu";
 import { getPhoto } from "./firebase/config";
 import { Profile } from "./components/Profile/Profile";
 import { Userlist } from "./components/Userlist/Userlist";
+import { Settings } from "./pages/Settings/Settings"
 export const getPhotoFromId = async (id) => {
   const DOC = await getPhoto(id);
 };
