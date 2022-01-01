@@ -31,9 +31,10 @@
   position: fixed;
   bottom: 70px;
   right: 90px;
-  padding: 100px 50px;
+  padding: 50px 25px;
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
+  display: none;
 }
 
 .profile__photo {
@@ -44,7 +45,8 @@
 
 .menu__button--item {
   display: flex;
-  margin-bottom: 5px;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .menu__button--item-name {
