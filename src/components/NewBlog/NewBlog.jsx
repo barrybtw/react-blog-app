@@ -133,7 +133,7 @@ export const NewBlog = () => {
         </h1>
         <div className="new__blog--form-field">
           <label htmlFor="title">Title</label>
-          <input
+          <textarea
             type="text"
             name="title"
             id="title"
