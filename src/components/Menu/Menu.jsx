@@ -41,13 +41,13 @@ export const Menu = ({ isAuth }) => {
       <div className={`menu__button--list-wrapper ${isActive && "active"}`}>
         <ul className="menu__button--list" ref={ref}>
           <li className="menu__button--item">
-            <Link to="/settings" className="click">
+            <Link to="/settings" className="click" onClick={() => setIsActive(false)}>
               <FiSettings />
               <span className="menu__button--item-name">Settings</span>
             </Link>
           </li>
           <li className="menu__button--item">
-            <Link to="/FAQ" className="click">
+            <Link to="/FAQ" className="click" onClick={() => setIsActive(false)}>
               <FaQuestion />
               <span className="menu__button--item-name">FAQ</span>
             </Link>
