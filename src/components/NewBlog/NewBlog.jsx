@@ -104,7 +104,7 @@ export const NewBlog = () => {
   const handleChange = (e) => {
     let selected = e.target.files[0];
     setFile(selected);
-  }
+  };
   return (
     <div className="new__blog--container">
       <img
@@ -140,12 +140,21 @@ export const NewBlog = () => {
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
-        {isMissingContent && ()}
+        {isMissingContent && (
+          <div>
+            <p></p>
+          </div>
+        )}
         <div className="new__blog--form-field">
           <label htmlFor="text">Upload Image</label>
           <div className="new__blog--form-wrapper">
             <label className="new__blog--label">
-              <input type="file" required={false} onChange={handleChange} hidden />
+              <input
+                type="file"
+                required={false}
+                onChange={handleChange}
+                hidden
+              />
               <span className="new__blog--custom-btn">Choose Image</span>
             </label>
             <div className="new__blog--output">
