@@ -38,9 +38,20 @@ export const NewBlog = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
+  var audio = new Audio("/no.mp3");
+
+  const start = () => {
+    audio.volume = 0.09;
+    audio.play();
+    setIsMissingContent(true);
+    setIsMissingTitle(true);
+  };
   const formHandler = (e) => {
     e.preventDefault();
-    if (title === "" || desc === null) return;
+    if (isMissingContent || isMissingTitle || title === "" || desc === "") {
+      start();
+      return;
+    }
     const file = e.target[2].files[0];
     uploadFile(file);
   };
@@ -128,8 +139,20 @@ export const NewBlog = () => {
             id="title"
             placeholder="Begin typing..."
             className="new__blog--form-input"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              if (e.target.value.length >= 10) {
+                setIsMissingTitle(false);
+              } else {
+                setIsMissingTitle(true);
+              }
+            }}
           />
+          {isMissingTitle && (
+            <div className="form__missing form__missing-title">
+              <p>Requires 10 characters or more</p>
+            </div>
+          )}
         </div>
         <div className="new__blog--form-field">
           <label htmlFor="text">Content</label>
@@ -139,14 +162,22 @@ export const NewBlog = () => {
             id="text"
             className="new__blog--form-input"
             placeholder="Begin typing..."
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => {
+              setDesc(e.target.value);
+              if (e.target.value.length >= 15) {
+                setIsMissingContent(false);
+              } else {
+                setIsMissingContent(true);
+              }
+            }}
           />
+          {isMissingContent && (
+            <div className="form__missing form__missing-content">
+              <p>Requires 15 characters or more</p>
+            </div>
+          )}
         </div>
-        {isMissingContent && (
-          <div>
-            <p></p>
-          </div>
-        )}
+
         <div className="new__blog--form-field">
           <label htmlFor="text">Upload Image</label>
           <div className="new__blog--form-wrapper">
