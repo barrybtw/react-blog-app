@@ -35,6 +35,12 @@ button {
   cursor: pointer;
 }
 
+@media screen and (max-width: 720px) {
+  #personal-logo {
+    display: none;
+  }
+}
+
 @media (max-width: 550px) {
   .postMetaInfo {
     flex-direction: column;
