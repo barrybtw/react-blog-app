@@ -4,10 +4,11 @@ import { CgProfile } from "react-icons/cg"
 import { auth } from "../../firebase/config";
 
 export const Menu = () => {
+    console.log(auth.currentUser.photoURL)
     return (
         <div className="menu__container">
             <button className="menu__buttons" >
-                <img src={ auth.currentUser.photoURL } alt="" />
+                {/* <img src={ auth.currentUser.photoURL } alt="" /> */}
             </button>
             <div className="menu__button--list-wrapper">
                 <ul className="menu__button--list">
