@@ -19,9 +19,6 @@ export const App = () => {
     });
   };
 
-  // Use signUserOut, setIsAuth as props
-  // Import auth in the nav
-
   return (
     <Router>
       <Navbar isAuth={isAuth} setIsAuth={setIsAuth} signUserOut={signUserOut} />
