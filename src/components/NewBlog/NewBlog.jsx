@@ -140,6 +140,7 @@ export const NewBlog = () => {
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
+        {isMissingContent && ()}
         <div className="new__blog--form-field">
           <label htmlFor="text">Upload Image</label>
           <div className="new__blog--form-wrapper">
