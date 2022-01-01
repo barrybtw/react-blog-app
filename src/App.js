@@ -34,7 +34,11 @@ export const App = () => {
 =======
         <Route path="profile" element={<User />} />
         <Route path="user/:id" element={<Profile />} />
+<<<<<<< HEAD
 >>>>>>> 419be32ac04c1fb011239fce4ef4ad57ae41d92c
+=======
+        <Route path="users" element={<Usersite />} />
+>>>>>>> 0481468c3d3d32995015ab207e0957fe39c8fe3e
       </Routes>
     </Router>
   );
