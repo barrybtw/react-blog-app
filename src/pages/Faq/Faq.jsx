@@ -1,4 +1,4 @@
-export const User = () => {
+export const Faq = () => {
     return (
         <section className="profile">
             <div className="profile__container">

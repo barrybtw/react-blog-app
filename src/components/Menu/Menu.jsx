@@ -1,7 +1,6 @@
 import "./menu.scss";
 import { FiSettings } from "react-icons/fi";
-import { CgProfile } from "react-icons/cg";
-import { FaBeer } from "react-icons/fa";
+import { FaBeer, FaQuestion } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -36,9 +35,9 @@ export const Menu = ({ isAuth }) => {
             </Link>
           </li>
           <li className="menu__button--item">
-            <Link to="/profile">
-              <CgProfile />
-              <span className="menu__button--item-name">Profile</span>
+            <Link to="/FAQ">
+              <FaQuestion />
+              <span className="menu__button--item-name">FAQ</span>
             </Link>
           </li>
         </ul>
