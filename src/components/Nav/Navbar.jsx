@@ -3,6 +3,7 @@ import { auth, provider, saveUser } from "../../firebase/config";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
+import logo from "../../assets/logo.png";
 
 export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
         <Link to="/">
           <img
             id="personal-logo"
-            src="https://brandmark.io/logo-rank/random/beats.png"
+            src={logo}
             alt=""
           />
         </Link>
