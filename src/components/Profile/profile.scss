@@ -1,0 +1,38 @@
+.profile__page {
+  height: calc(100vh - 92px);
+  padding: 1rem;
+  display: grid;
+}
+
+.profile__card {
+  max-width: 1600px;
+  width: 97vw;
+
+  margin: 0 auto;
+  height: calc(100vh-92px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.profile__page-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profile__page-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__page-right img {
+  width: 30vw;
+  border-radius: 40%;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
+}

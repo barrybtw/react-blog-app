@@ -1,15 +1,7 @@
 // Import the functions you need from the SDKs you need
+import { setDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  Timestamp,
-  getDoc,
-  where,
-  getDocs,
-  doc,
-} from "firebase/firestore";
+import { getFirestore, collection, getDoc, doc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -34,7 +26,7 @@ export const db = getFirestore();
 export const storage = getStorage(firebaseApp);
 
 export const saveUser = async (res) => {
-  const userRef = collection(db, "users");
+  const userRef = doc(db, "users", res.user.uid);
   const uid = res.user.uid;
   const displayName = res.user.displayName;
   const photoUrl = res.user.providerData[0].photoURL;
@@ -50,23 +42,18 @@ export const saveUser = async (res) => {
     "EMAIL",
     userMail
   );
-  await addDoc(
-    userRef,
-    {
-      userID: uid,
-      userName: displayName,
-      photoURL: photoUrl,
-      biography: "",
-      userMail: userMail,
-    },
-    uid,
-    uid
-  );
+  await setDoc(userRef, {
+    userID: uid,
+    userName: displayName,
+    photoURL: photoUrl,
+    biography: "Human",
+    userMail: userMail,
+  });
 };
 
 export const getPhoto = async (id) => {
   const userRef = doc(db, `users/${id}`);
   getDoc(userRef).then((doc) => {
-    console.log(doc.data(), doc.data().photoURL);
+    console.log(doc.data());
   });
 };

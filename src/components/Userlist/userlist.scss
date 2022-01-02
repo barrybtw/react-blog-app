@@ -1,0 +1,53 @@
+.users__page {
+  min-height: calc(100vh - 92px);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.users__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 0fr));
+  gap: 3rem;
+  height: 100%;
+  width: 90vw;
+  max-width: 1200px;
+  place-content: center;
+}
+
+.profile {
+  text-align: center;
+  max-width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 20px;
+  margin: 0 !important;
+  user-select: text;
+  cursor: pointer;
+}
+
+.profile__image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.profile__name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.profile__detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}

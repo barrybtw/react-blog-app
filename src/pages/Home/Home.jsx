@@ -10,14 +10,11 @@ import {
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 import Campfire from "./../../assets/campfire.png";
-import { getPhotoFromId } from "./../../App";
 
 export const Home = ({ isAuth }) => {
   const [postLists, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const postsCollectionRef = collection(db, "posts");
-  const document = getPhotoFromId("HXjwoPT7IebGbXVqZ3zZ");
-  console.log("KEYS", document.userName);
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(
@@ -61,9 +58,9 @@ export const Home = ({ isAuth }) => {
               )}
               <div className="postTextContainer">{post.post} </div>
               <div className="postMetaInfo">
-                <h6 className="blog__author">@ {post.author.name}</h6>
+                <h6 className="blog__author">@ {post.authorName}</h6>
                 <h6>Posted {post.postTime}</h6>
-                {isAuth && post.author.id === auth.currentUser.uid && (
+                {isAuth && post.authorID === auth.currentUser.uid && (
                   <div className="deletePost">
                     <button
                       className="noselect"

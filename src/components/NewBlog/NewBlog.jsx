@@ -90,10 +90,8 @@ export const NewBlog = () => {
         title,
         blogid: uuidv4(),
         post: desc,
-        author: {
-          name: auth.currentUser.displayName,
-          id: auth.currentUser.uid,
-        },
+        authorID: auth.currentUser.uid,
+        authorName: auth.currentUser.displayName,
         createdAt: new Date(),
         postTime: dtfUS.format(specialDate),
       });
@@ -102,10 +100,8 @@ export const NewBlog = () => {
         title,
         blogid: uuidv4(),
         post: desc,
-        author: {
-          name: auth.currentUser.displayName,
-          id: auth.currentUser.uid,
-        },
+        authorID: auth.currentUser.uid,
+        authorName: auth.currentUser.displayName,
         image: url,
         createdAt: new Date(),
         postTime: dtfUS.format(specialDate),
