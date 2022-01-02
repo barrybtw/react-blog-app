@@ -7,7 +7,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { auth, db, getPhoto } from "../../firebase/config";
+import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 import Campfire from "./../../assets/campfire.png";
 import { getPhotoFromId } from "./../../App";
