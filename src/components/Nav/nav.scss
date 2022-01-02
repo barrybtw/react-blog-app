@@ -11,6 +11,8 @@ nav {
 .nav__bar {
   display: flex;
   justify-content: space-between;
+  animation: transitionIn 3000ms;
+
   align-items: center;
   width: 100%;
   max-width: 1200px;
