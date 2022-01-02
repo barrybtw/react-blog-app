@@ -82,7 +82,10 @@ export const Faq = () => {
           </p>
         </div>
       </div>
-      <div className="contact__section"></div>
+      <div className="contact__section">
+        <h1 className="contact__title"></h1>
+        <form action=""></form>
+      </div>
     </section>
   );
 };
