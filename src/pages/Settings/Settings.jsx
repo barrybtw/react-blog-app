@@ -24,20 +24,28 @@ export const Settings = ({ isAuth }) => {
     <section id="edit-profile">
       <div className="edit-profile__container">
         <div className="edit-profile__row">
-            <h1 className="section__header">Edit Profile</h1>
+          <h1 className="section__header">Edit Profile</h1>
           <div className="edit-profile--info">
             <div className="edit-profile">
               <figure className="edit-profile__img--wrapper">
                 <img className="edit-profile__img" src={user.photoURL} alt="" />
                 <div className="edit-profile__overlay">
-                  <p className="edit-profile__text">Edit Profile</p>
+                  <div className="edit-profile--form-wrapper">
+                    <label className="edit-profile--label">
+                      <input type="file" required={false} hidden />
+                      <span className="edit-profile--custom-btn">
+                        <p className="click">Choose Image</p>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </figure>
               <strong class="text--purple">
-                <h3>{user.userName}</h3>
+                <h3 className="edit-profile__name click">{user.userName}</h3>
               </strong>
               <p className="edit-profile__biography">
-                { user.biography }
+                <strong class="text--purple click">Biography: </strong>{" "}
+                {user.biography}
               </p>
             </div>
           </div>
