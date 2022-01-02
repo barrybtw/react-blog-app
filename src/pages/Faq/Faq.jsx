@@ -84,7 +84,12 @@ export const Faq = () => {
       </div>
       <div className="contact__section">
         <h1 className="contact__title"></h1>
-        <form action=""></form>
+        <form action="">
+          <div className="contact__form-name">
+            <label htmlFor=""></label>
+            <input type="text" />
+          </div>
+        </form>
       </div>
     </section>
   );
