@@ -50,7 +50,7 @@ export const Home = ({ isAuth }) => {
         return (
           <div className="blog__container" key={post.id}>
             <div className="blog__content">
-              <h1>{post.title}</h1>
+              <h1 className="blog__content-title">{post.title}</h1>
               {post.image && (
                 <div className="blog__post-picture--mask">
                   <img className="home__post--img" src={post.image} alt="" />
