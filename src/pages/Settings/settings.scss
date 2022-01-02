@@ -1,35 +1,70 @@
 .edit-profile__container {
-    padding: 50px 0;
+  padding: 50px 0;
 }
 
 .edit-profile--info {
-    padding-top: 50px;
-    display: flex;
-    width: auto;
-    justify-content: center;
-    flex-wrap: wrap;
+  padding-top: 50px;
+  display: flex;
+  width: auto;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .edit-profile {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .edit-profile__img--wrapper {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.16);
-    margin: 32px 0;
-    position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+  margin: 32px 0;
+  position: relative;
+
+  &:hover .edit-profile__overlay {
+    transform: scale(1);
+  }
 }
 
 .edit-profile__img {
-    width: 100%;
-    object-fit: contain;
+  width: 100%;
+  object-fit: contain;
+}
+
+.edit-profile__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 500ms ease;
+}
+
+.edit-profile--custom-btn {
+    color: #FFF;
+    font-size: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.text--purple {
+  color: #f2385b;
+}
+
+.edit-profile__name {
+  padding-bottom: 12px;
 }
