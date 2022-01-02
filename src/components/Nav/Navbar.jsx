@@ -35,11 +35,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
       {/* Branch Logo */}
       <figure>
         <Link to="/">
-          <img
-            id="personal-logo"
-            src={logo}
-            alt=""
-          />
+          <img id="personal-logo" src={logo} alt="" />
         </Link>
       </figure>
       {/* Home button */}
@@ -55,6 +51,18 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
             Home
           </Link>
         </li>
+        {/* FAQ button */}
+        <li className="nav__link">
+          <Link
+            to="/faq"
+            className="
+              nav__link--anchor
+              link__hover-effect
+              link__hover-effect--black"
+          >
+            FAQ
+          </Link>
+        </li>
         {/* Blog button */}
         <li className="nav__link">
           <Link
@@ -64,7 +72,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
               link__hover-effect
               link__hover-effect--black"
           >
-            User Profiles
+            Users
           </Link>
         </li>
         {/* If logged in, create blog button, else nothing, aka. conditional render */}
