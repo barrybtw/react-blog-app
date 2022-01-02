@@ -1,0 +1,11 @@
+.faq__container {
+  min-height: calc(100vh - 92px);
+  width: 90vw;
+  max-width: 1600px;
+  margin: 2rem auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}

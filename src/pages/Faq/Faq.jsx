@@ -1,11 +1,12 @@
+//React
+
+import "./faq.scss";
+
+//
 export const Faq = () => {
-    return (
-        <section className="profile">
-            <div className="profile__container">
-                <div className="profile__row">
-                    FAQ PAGE
-                </div>
-            </div>
-        </section>
-    )
-}
+  return (
+    <section className="faq__container">
+      <div>hi</div>
+    </section>
+  );
+};
