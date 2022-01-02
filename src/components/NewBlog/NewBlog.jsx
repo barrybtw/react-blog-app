@@ -137,7 +137,7 @@ export const NewBlog = () => {
             className="new__blog--form-input"
             onChange={(e) => {
               setTitle(e.target.value);
-              if (e.target.value.length >= 10) {
+              if (e.target.value.length >= 5) {
                 setIsMissingTitle(false);
               } else {
                 setIsMissingTitle(true);
@@ -146,7 +146,7 @@ export const NewBlog = () => {
           />
           {isMissingTitle && (
             <div className="form__missing form__missing-title">
-              <p>Requires 10 characters or more</p>
+              <p>Requires 5 characters or more</p>
             </div>
           )}
         </div>
@@ -160,7 +160,7 @@ export const NewBlog = () => {
             placeholder="Begin typing..."
             onChange={(e) => {
               setDesc(e.target.value);
-              if (e.target.value.length >= 15) {
+              if (e.target.value.length >= 10) {
                 setIsMissingContent(false);
               } else {
                 setIsMissingContent(true);
@@ -169,7 +169,7 @@ export const NewBlog = () => {
           />
           {isMissingContent && (
             <div className="form__missing form__missing-content">
-              <p>Requires 15 characters or more</p>
+              <p>Requires 10 characters or more</p>
             </div>
           )}
         </div>
