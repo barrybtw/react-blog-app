@@ -1,53 +1,74 @@
-.users__page {
-  min-height: calc(100vh - 92px);
-  width: 100vw;
+#users-gallery {
+  background-color: #f8f8f8;
+}
+
+.users-gallery__container {
+  padding: 50px 0;
+}
+
+.section__header {
+  color: #f2385b;
+  font-size: 40px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.users-gallery__img--wrapper {
+  width: 80%;
+  margin: 100px auto 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 30px;
+}
+
+.users-gallery__img--wrapper .users-gallery--img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 30px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.users-gallery__img--wrapper .users-gallery--img:hover {
+  box-shadow: 0 32px 75px rgba(68, 77, 136, 0.2);
+}
+
+.users-gallery--overlay {
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.users-gallery__about-me {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.65);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  color: #FFF;
+  font-size: 28px;
   justify-content: center;
-}
-
-.users__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 0fr));
-  gap: 3rem;
-  height: 100%;
-  width: 90vw;
-  max-width: 1200px;
-  place-content: center;
-}
-
-.profile {
-  text-align: center;
-  max-width: 250px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  padding: 20px;
-  margin: 0 !important;
-  user-select: text;
-  cursor: pointer;
-}
-
-.profile__image {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 auto 20px auto;
-  display: block;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  user-select: none;
+  transform: scale(0);
+  transition: all 500ms ease;
 }
 
 .profile__name {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 1em;
+  padding-bottom: 12px;
 }
 
-.profile__detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9em;
+.users-gallery--overlay:hover .users-gallery__about-me{
+  transform: scale(1);
+  cursor: pointer;
+}
+
+.users-gallery--overlay:hover:active {
+  transform: scale(0.8);
 }
