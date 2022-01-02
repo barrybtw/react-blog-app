@@ -20,58 +20,69 @@ export const Faq = () => {
       <div className="faq__cards">
         <div className="faq__card faq__card-1">
           <h1 className="faq__card-title">
-            How do I <span className="stroke">login?</span>
+            How do I <span className="stroke-small">login?</span>
           </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            You login to our website by clicking the button in the top right
+            hand corner. This will initially open as a google login which is the
+            only way to access our site's full user experience.
           </p>
         </div>
         <div className="faq__card faq__card-2">
           <h1 className="faq__card-title">
-            Can i login with my <span className="stroke">email?</span>{" "}
+            Can i login with my <span className="stroke-small">email?</span>
           </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            No, we as a website have chosen to only operate using the google
+            login method. You can find said login button in the top right hand
+            corner of the website.
           </p>
         </div>
         <div className="faq__card faq__card-3">
-          <h1 className="faq__card-title">QUESTION</h1>
+          <h1 className="faq__card-title">
+            Is my data <span className="stroke-small">safe?</span>
+          </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            In short terms, yes, your user data is very safe with us, and all
+            data which we collect is your email, your google profile picture,
+            your name, and any posts which you may make during your stay.
           </p>
         </div>
         <div className="faq__card faq__card-4">
-          <h1 className="faq__card-title">QUESTION</h1>
+          <h1 className="faq__card-title">
+            How do i make a <span className="stroke-small">blog post?</span>
+          </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            Users are free to make as many posts as they like, said posts can
+            only be made by users who have logged in through our google login
+            process. To make a post you will have to go to the 'Create a blog'
+            site and input a title and a description, optionally an image.
           </p>
         </div>
         <div className="faq__card faq__card-5">
-          <h1 className="faq__card-title">QUESTION</h1>
+          <h1 className="faq__card-title">
+            Who <span className="stroke-small">developed</span> this website?
+          </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            This website was build with React as front-end and Firebase as
+            back-end by two developers, Jawad and Nicolai.
           </p>
         </div>
         <div className="faq__card faq__card-6">
-          <h1 className="faq__card-title">QUESTION</h1>
+          <h1 className="faq__card-title">
+            What is your <span className="stroke-small">favorite quote?</span>
+          </h1>
           <p className="faq__card-answer">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
-            dolorum cumque inventore.
+            Twenty years from now you will be more disappointed by the things
+            that you didn't do than by the ones you did do. So, throw off the
+            bowlines, sail away from safe harbor, catch the trade winds in your
+            sails. Explore, Dream, Discover.
+            <br />
+            <br />- Mark Twain
           </p>
         </div>
       </div>
-      <div className="contact__card"></div>
+      <div className="contact__section"></div>
     </section>
   );
 };
