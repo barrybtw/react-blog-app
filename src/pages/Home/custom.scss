@@ -58,6 +58,7 @@
 .home__container {
   min-height: calc(100vh - 80px - 3rem);
   margin-top: 3rem;
+  animation: transitionIn 1500ms;
 
   margin-bottom: 3rem;
 

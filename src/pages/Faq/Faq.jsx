@@ -1,7 +1,6 @@
 //React
 
 import "./faq.scss";
-import Background from "./../../assets/faq.jpg";
 
 //
 export const Faq = () => {
@@ -20,7 +19,7 @@ export const Faq = () => {
       </div>
       <div className="faq__cards">
         <div className="faq__card faq__card-1">
-          <h1 className="faq__card-title">QUESTION</h1>
+          <h1 className="faq__card-title">How do I login?</h1>
           <p className="faq__card-answer">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
@@ -51,7 +50,24 @@ export const Faq = () => {
             dolorum cumque inventore.
           </p>
         </div>
+        <div className="faq__card faq__card-5">
+          <h1 className="faq__card-title">QUESTION</h1>
+          <p className="faq__card-answer">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
+            dolorum cumque inventore.
+          </p>
+        </div>
+        <div className="faq__card faq__card-6">
+          <h1 className="faq__card-title">QUESTION</h1>
+          <p className="faq__card-answer">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Dignissimos ab ipsa veniam odit unde voluptate dolorem soluta,
+            dolorum cumque inventore.
+          </p>
+        </div>
       </div>
+      <div className="contact__card"></div>
     </section>
   );
 };

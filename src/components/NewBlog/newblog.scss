@@ -30,6 +30,7 @@
 }
 
 .new__blog--container {
+  animation: transitionIn 3000ms;
   width: 100vw;
   position: relative;
   display: grid;
@@ -215,8 +216,13 @@
   letter-spacing: 2px;
 }
 
-.form__missing-title {
-}
-
-.form__missing-content {
+@keyframes transitionIn {
+  from {
+    opacity: 0.2;
+    transform: rotateX(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
 }

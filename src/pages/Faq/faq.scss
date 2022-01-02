@@ -3,16 +3,7 @@
   width: 95vw;
   max-width: 1800px;
   margin: 2rem auto;
-}
-
-.faq__background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 99vw;
-  z-index: -1;
-  margin-top: 7.5rem;
+  animation: transitionIn 2000ms;
 }
 
 .faq__header {
@@ -20,7 +11,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column-reverse;
-  height: 70vh;
+  height: 50vh;
   width: 100%;
 }
 
@@ -29,6 +20,8 @@
   font-size: 3rem;
   text-align: left;
   letter-spacing: 2px;
+  transform-origin: left;
+  transition: all 0.3s ease;
 
   background: url("./../../assets/faq.jpg");
   background-size: cover;
@@ -51,5 +44,51 @@
     color: transparent;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
+  }
+}
+
+// Cards div
+.faq__cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq__card {
+  width: 90%;
+  min-width: 250px;
+  max-width: 650px;
+  height: 15rem;
+  margin: 1rem;
+  display: flex;
+  gap: 3rem;
+  padding: 1rem;
+  flex-direction: column;
+
+  border: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 213, 252, 0.8)
+    ),
+    1px solid;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, red, purple);
+  border-image-slice: 1;
+}
+
+.faq__card-title {
+  font-family: IntegralCF-regular;
+  letter-spacing: 2px;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0.2;
+    transform: rotateX(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
   }
 }
