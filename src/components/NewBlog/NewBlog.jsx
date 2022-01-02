@@ -114,6 +114,7 @@ export const NewBlog = () => {
     let selected = e.target.files[0];
     setFile(selected);
   };
+  console.log(auth.currentUser);
   return (
     <div className="new__blog--container">
       <img
