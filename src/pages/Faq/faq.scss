@@ -103,12 +103,75 @@
 
 .contact__section {
   height: 85vh;
-  width: 100%;
+  width: 90%;
+  max-width: calc(650px * 2 + 32px);
+  margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  background: rgb(248, 248, 248);
+  background: rgb(254, 254, 254);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 3rem;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, red, purple, green, red, purple);
+  border-image-slice: 1;
+  font-family: IntegralCF-regular, sans-serif;
 }
 
 .contact__title {
   font-family: IntegralCF-regular, sans-serif;
+  letter-spacing: 3px;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+textarea {
+  resize: none;
+  height: 1.5rem;
+  font-size: 1rem;
+  font-family: IntegralCF-regular, sans-serif;
+  font-weight: 100;
+  &::placeholder {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact__form {
+    flex-direction: column;
+  }
+}
+
+.contact__form--part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  gap: 4rem;
+}
+
+.contact__form-left {
+}
+.contact__form-right {
+}
+
+.contact__form-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-direction: column;
+  width: 60%;
+  * {
+    width: 100%;
+  }
 }
