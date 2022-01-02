@@ -14,7 +14,11 @@
   height: 50vh;
   width: 100%;
 }
-
+.stroke {
+  color: transparent;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+}
 .faq__title {
   font-family: IntegralCF-bold, sans-serif;
   font-size: 3rem;
@@ -39,12 +43,6 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-
-  stroke {
-    color: transparent;
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
-  }
 }
 
 // Cards div
@@ -84,7 +82,7 @@
 
 @keyframes transitionIn {
   from {
-    opacity: 0.2;
+    opacity: 0;
     transform: rotateX(-5deg);
   }
   to {
