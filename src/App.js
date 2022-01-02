@@ -34,7 +34,7 @@ export const App = () => {
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/new" element={<NewBlog isAuth={isAuth} />} />
         <Route path="/FAQ" element={<Faq />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<Settings isAuth={isAuth} />} />
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/user-profiles" element={<Userlist />} />
       </Routes>
