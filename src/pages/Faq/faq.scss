@@ -108,7 +108,9 @@
   margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  background: rgb(254, 254, 254);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url("./../../assets/form.jpg");
+  background-size: cover;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -134,10 +136,12 @@
 
 textarea {
   resize: none;
-  height: 1.5rem;
+  height: 1.9rem;
   font-size: 1rem;
   font-family: IntegralCF-regular, sans-serif;
   font-weight: 100;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.3);
   &::placeholder {
     font-size: 1rem;
   }
@@ -165,6 +169,10 @@ textarea {
 .contact__form-right {
 }
 
+.contact__form--input-message {
+  height: 10rem;
+}
+
 .contact__form-field {
   display: flex;
   align-items: flex-start;
@@ -174,4 +182,66 @@ textarea {
   * {
     width: 100%;
   }
+  label {
+    letter-spacing: 2px;
+  }
+}
+
+.contact__form-submit {
+  border: none;
+  padding: 0.8em 2.5em;
+  outline: none;
+  color: white;
+  font-style: 1.2em;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+  font-size: 1.2rem;
+}
+
+.contact__form-submit:before,
+.contact__form-submit:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: "";
+  z-index: -2;
+  background-size: 400% 400%;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+}
+
+.contact__form-submit:before {
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-animation: pulse 10s infinite ease;
+  animation: pulse 10s infinite ease;
+}
+
+.contact__form-submit:after {
+  -webkit-filter: blur(0.3px);
+  filter: blur(0.3px);
+}
+
+.contact__form-submit:hover:before {
+  width: 108%;
+  height: 115%;
 }

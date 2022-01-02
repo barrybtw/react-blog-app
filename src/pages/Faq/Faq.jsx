@@ -99,20 +99,28 @@ export const Faq = () => {
       </div>
       <div className="contact__section">
         <h1 className="contact__title stroke">CONTACT US</h1>
-        <form action="" className="contact__form" ref={form}>
+        <form action="" className="contact__form" ref={form} id="form">
           <div className="contact__form-left contact__form--part">
             <div className="contact__form-field contact__form-name">
               <label htmlFor="">NAME</label>
-              <textarea type="text" placeholder="Name..." />
+              <textarea type="text" placeholder="Name..." required={true} />
             </div>
             <div className="contact__form-field contact__form-email">
               <label htmlFor="">EMAIL</label>
-              <textarea type="text" placeholder="Email..." />
+              <textarea type="email" placeholder="Email..." required={true} />
             </div>
             <div className="contact__form-field contact__form-message">
               <label htmlFor="">MESSAGE</label>
-              <textarea type="text" placeholder="Message..." />
+              <textarea
+                type="text"
+                placeholder="Message..."
+                required={true}
+                className="contact__form--input-message"
+              />
             </div>
+            <button type="submit" form="form" className="contact__form-submit">
+              CONTACT US
+            </button>
           </div>
         </form>
       </div>
