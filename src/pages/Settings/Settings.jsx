@@ -2,8 +2,8 @@ import "./settings.scss";
 
 export const Settings = () => {
     return (
-        <div>
+        <section id="edit-profile">
             SETTINGS
-        </div>
+        </section>
     )
 }
