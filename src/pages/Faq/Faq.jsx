@@ -3,22 +3,21 @@
 import { useRef } from "react";
 import "./faq.scss";
 
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 //
 export const Faq = () => {
   const form = useRef();
-  
-  const serviceID = "service_77jp9r9"
-  const templateID = "template_q0f820h"
-  const userID = "user_ULkTbFhXx27CetTfYChwV"
-  
+
+  const serviceID = "service_77jp9r9";
+  const templateID = "template_q0f820h";
+  const userID = "user_ULkTbFhXx27CetTfYChwV";
 
   const sendMail = (event) => {
     event.preventDefault();
 
-    emailjs.sendForm()
-  }
+    emailjs.sendForm();
+  };
 
   return (
     <section className="faq__container">
@@ -100,7 +99,7 @@ export const Faq = () => {
       </div>
       <div className="contact__section">
         <h1 className="contact__title stroke">CONTACT US</h1>
-        <form action="" className="contact__form" ref={}>
+        <form action="" className="contact__form" ref={form}>
           <div className="contact__form-left contact__form--part">
             <div className="contact__form-field contact__form-name">
               <label htmlFor="">NAME</label>
