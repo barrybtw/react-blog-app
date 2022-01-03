@@ -35,15 +35,15 @@ export const Faq = () => {
   return (
     <section className="faq__container">
       <div className="faq__header">
-        <div className="faq__title">FREQUENTLY ASKED QUESTIONS</div>
         <div className="faq__desc">
           <span>
-            <span className="stroke">Got</span> a question?
+            <span className="stroke">Have</span> a question?
           </span>
           <span>
             We're here to <span className="stroke">answer!</span>
           </span>
         </div>
+        <div className="faq__title">FREQUENTLY ASKED QUESTIONS</div>
       </div>
       <div className="faq__cards">
         <div className="faq__card faq__card-1">
