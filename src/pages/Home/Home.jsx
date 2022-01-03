@@ -90,7 +90,7 @@ export const Home = ({ isAuth }) => {
                   <p>{post.authorName}</p>
                 </div>
                 <p
-                  className="home__blog-delete"
+                  className="home__blog-delete click"
                   onClick={() => {
                     deletePost(post.id);
                   }}
