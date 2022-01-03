@@ -312,6 +312,7 @@
 }
 
 .home__blog-title {
+  padding-bottom: 12px;
   word-break: break-all;
   font-family: IntegralCF-bold, sans-serif;
   letter-spacing: 2px;
@@ -378,12 +379,6 @@
   font-family: IntegralCF-bold, sans-serif;
   letter-spacing: 2px;
   font-size: 1.5rem;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background-position: center;
-    transform: scale(1.05);
-  }
 }
 
 @media screen and (max-width: 1120px) {
