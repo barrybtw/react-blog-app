@@ -8,9 +8,7 @@ import { db } from "../../firebase/config";
 export const Settings = ({ isAuth }) => {
   const [user, setUser] = useState([]);
   const id = localStorage.getItem("id");
-  const [displayName, setDisplayName] = useState(null);
   const [biography, setBiography] = useState(null);
-  const [hiddenInput, setHiddenInput] = useState(false);
   const [message, setMessage] = useState(false);
   const [hiddenTextArea, setHiddenTextArea] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -29,11 +27,6 @@ export const Settings = ({ isAuth }) => {
     e.preventDefault();
     const file = e.target.files[0];
     uploadFile(file);
-  };
-
-  const handleKeyPress = () => {
-    updateProfileName();
-    setHiddenInput(false);
   };
 
   const handleAreaKeyPress = () => {
@@ -68,19 +61,6 @@ export const Settings = ({ isAuth }) => {
     const usersRef = doc(db, "users", id);
     await updateDoc(usersRef, {
       photoURL: url,
-    })
-      .then(() => {
-        setMessage(true);
-      })
-      .catch((err) => {
-        console.log("ERROR" + err);
-      });
-  };
-
-  const updateProfileName = async () => {
-    const usersRef = doc(db, "users", id);
-    await updateDoc(usersRef, {
-      userName: displayName,
     })
       .then(() => {
         setMessage(true);
@@ -131,18 +111,9 @@ export const Settings = ({ isAuth }) => {
               <strong className="text--purple">
                 <h3
                   className="edit-profile__name click"
-                  onClick={() => setHiddenInput(true)}
                 >
                   {user.userName}
                 </h3>
-                {hiddenInput && (
-                  <input
-                    placeholder="begin typing..."
-                    className="edit-profile__name--hidden"
-                    onChange={(e) => setDisplayName(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && handleKeyPress()}
-                  />
-                )}
               </strong>
               <div className="edit-profile__biography">
                 <div
