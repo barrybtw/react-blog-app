@@ -83,18 +83,27 @@ export const Home = ({ isAuth }) => {
                 <p>{post.post}</p>
               </div>
             </div>
-            <div className="home__blog-metadata">
-              <p>Written by {post.authorName}</p>
-            </div>
-            {isAuth && post.authorID === auth.currentUser.uid && (
-              <p
-                className="home__blog-delete"
-                onClick={() => {
-                  deletePost(post.id);
-                }}
-              >
-                DELETE
-              </p>
+
+            {isAuth && post.authorID === auth.currentUser.uid ? (
+              <>
+                <div className="home__blog-metadata-special">
+                  <p>{post.authorName}</p>
+                </div>
+                <p
+                  className="home__blog-delete"
+                  onClick={() => {
+                    deletePost(post.id);
+                  }}
+                >
+                  DELETE
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="home__blog-metadata-notspecial">
+                  <p>{post.authorName}</p>
+                </div>
+              </>
             )}
           </div>
         ))}

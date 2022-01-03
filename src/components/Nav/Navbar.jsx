@@ -116,7 +116,6 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                 }}
               >
                 Log In
-                <FcGoogle />
               </button>
             )}
             {/* Conditional renders end */}
