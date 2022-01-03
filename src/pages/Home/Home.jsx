@@ -51,7 +51,7 @@ export const Home = ({ isAuth }) => {
           </div>
         )}
         {postLists.map((post) => (
-          <div className="home__blog-container">
+          <div className="home__blog-container" key={post.id}>
             <div className="home__blog-aurora">
               {post.image ? (
                 <>
