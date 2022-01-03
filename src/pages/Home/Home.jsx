@@ -10,6 +10,7 @@ import {
 import { auth, db } from "../../firebase/config";
 import "./custom.scss";
 import Campfire from "./../../assets/campfire.png";
+import auroraImage from "./../../assets/aurora.png";
 
 export const Home = ({ isAuth }) => {
   const [postLists, setPostList] = useState([]);
@@ -31,6 +32,51 @@ export const Home = ({ isAuth }) => {
     await deleteDoc(postDoc);
     window.location.reload();
   };
+
+  const BlogRender = () => {
+    return (
+      <div className="home-blog__list">
+        {isAuth ? (
+          <div className="welcome__back-div">
+            <h1 className="welcome__back">
+              Welcome {auth.currentUser.displayName}
+            </h1>
+            <img src={Campfire} alt="" className="welcome__back-img" />
+          </div>
+        ) : (
+          <div className="welcome__back-div">
+            <h1 className="welcome__back">Welcome to Cabin</h1>
+            <img src={Campfire} alt="" className="welcome__back-img" />
+          </div>
+        )}
+        {postLists.map((post) => (
+          <div className="home__blog-container">
+            <div className="home__blog-aurora">
+              <img src={auroraImage} alt="" className="home__blog-aurora-img" />
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt={`Image in blog of ${post.authorName}`}
+                  className="home__blog-image"
+                />
+              )}
+            </div>
+
+            <div className="home__blog-content">
+              <div className="home__blog-content-top">
+                <h1 className="home__blog-title">{post.title}</h1>
+                <p>{post.post}</p>
+              </div>
+            </div>
+            <div className="home__blog-metadata">
+              <p>Written by {post.authorName}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const RenderPosts = () => (
     <div className="home-blog__list">
       {isAuth ? (
@@ -98,7 +144,7 @@ export const Home = ({ isAuth }) => {
           <div></div>
         </div>
       ) : (
-        <RenderPosts />
+        <BlogRender />
       )}
     </div>
   );
