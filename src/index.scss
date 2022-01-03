@@ -84,6 +84,29 @@ button {
   }
 }
 
+@media screen and (max-width: 1040px) {
+  .contact__form-field {
+    width: 95% !important;
+  }
+}
+
+@media screen and (max-height: 764px) {
+  .contact__form--part {
+    gap: 4vh !important;
+  }
+}
+@media screen and (max-height: 614px) {
+  .contact__form--input-message {
+    height: 5rem !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact__form {
+    flex-direction: column !important;
+  }
+}
+
 @media (max-width: 550px) {
   .postMetaInfo {
     flex-direction: column;

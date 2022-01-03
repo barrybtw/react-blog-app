@@ -1,22 +1,35 @@
 //React
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./faq.scss";
 
 import emailjs from "emailjs-com";
 
 //
 export const Faq = () => {
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
+  const [message, setMessage] = useState("");
+
   const form = useRef();
 
-  const serviceID = "service_77jp9r9";
+  const serviceID = "service_w2maars";
   const templateID = "template_q0f820h";
   const userID = "user_ULkTbFhXx27CetTfYChwV";
-
   const sendMail = (event) => {
     event.preventDefault();
 
-    emailjs.sendForm();
+    emailjs.sendForm(serviceID, templateID, form.current, userID).then(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    setName("");
+    setMail("");
+    setMessage("");
   };
 
   return (
@@ -99,15 +112,37 @@ export const Faq = () => {
       </div>
       <div className="contact__section">
         <h1 className="contact__title">CONTACT US</h1>
-        <form action="" className="contact__form" ref={form} id="form">
+        <form
+          action=""
+          className="contact__form"
+          ref={form}
+          id="form"
+          onSubmit={sendMail}
+        >
           <div className="contact__form-left contact__form--part">
             <div className="contact__form-field contact__form-name">
               <label htmlFor="">NAME</label>
-              <textarea type="text" placeholder="Name..." required={true} />
+              <textarea
+                type="text"
+                placeholder="Name..."
+                required={true}
+                name="from_name"
+                className="letterspacing-fix"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
             </div>
             <div className="contact__form-field contact__form-email">
               <label htmlFor="">EMAIL</label>
-              <textarea type="email" placeholder="Email..." required={true} />
+              <input
+                type="email"
+                placeholder="Email..."
+                className="input--fix letterspacing-fix"
+                required={true}
+                name="user_email"
+                value={mail}
+                onChange={(event) => setMail(event.target.value)}
+              />
             </div>
             <div className="contact__form-field contact__form-message">
               <label htmlFor="">MESSAGE</label>
@@ -115,7 +150,10 @@ export const Faq = () => {
                 type="text"
                 placeholder="Message..."
                 required={true}
+                name="message"
                 className="contact__form--input-message"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
               />
             </div>
             <button type="submit" form="form" className="contact__form-submit">
