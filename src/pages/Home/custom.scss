@@ -304,6 +304,9 @@
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 1rem;
+  font-family: IntegralCF-bold, sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .blog__post-picture--mask {
@@ -405,6 +408,8 @@
 
 .home__blog-title {
   word-break: break-all;
+  font-family: IntegralCF-bold, sans-serif;
+  letter-spacing: 2px;
 }
 
 .home__blog-content-vertical {
