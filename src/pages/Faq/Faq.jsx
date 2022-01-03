@@ -71,9 +71,9 @@ export const Faq = () => {
             Is my data <span className="stroke-small">safe?</span>
           </h1>
           <p className="faq__card-answer">
-            In short terms, yes, your user data is very safe with us, and all
-            data which we collect is your email, your google profile picture,
-            your name, and any posts which you may make during your stay.
+            Yes, your user data is very safe with us, and all data which we
+            collect is your email, your google profile picture, your name, and
+            any posts which you may make during your stay.
           </p>
         </div>
         <div className="faq__card faq__card-4">
@@ -124,7 +124,7 @@ export const Faq = () => {
               <label htmlFor="">NAME</label>
               <textarea
                 type="text"
-                placeholder="Name..."
+                placeholder="Begin writing..."
                 required={true}
                 name="from_name"
                 className="letterspacing-fix"
@@ -136,7 +136,7 @@ export const Faq = () => {
               <label htmlFor="">EMAIL</label>
               <input
                 type="email"
-                placeholder="Email..."
+                placeholder="Begin writing..."
                 className="input--fix letterspacing-fix"
                 required={true}
                 name="user_email"
@@ -148,7 +148,7 @@ export const Faq = () => {
               <label htmlFor="">MESSAGE</label>
               <textarea
                 type="text"
-                placeholder="Message..."
+                placeholder="Begin writing..."
                 required={true}
                 name="message"
                 className="contact__form--input-message"

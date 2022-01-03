@@ -3,6 +3,7 @@ import { auth, provider, saveUser } from "../../firebase/config";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 import logo from "../../assets/logo.png";
 
 export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
@@ -115,6 +116,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
                 }}
               >
                 Log In
+                <FcGoogle />
               </button>
             )}
             {/* Conditional renders end */}
