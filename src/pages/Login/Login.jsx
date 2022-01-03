@@ -20,13 +20,10 @@ export const Login = ({ isAuth, setIsAuth }) => {
     setTimer(true);
 
     signInWithPopup(auth, provider).then((res) => {
-      console.log(isAuth);
       setIsAuth(true);
       localStorage.setItem("isAuth", true);
 
       navigate("/");
-
-      console.log(res);
     });
 
     setTimeout(() => {
