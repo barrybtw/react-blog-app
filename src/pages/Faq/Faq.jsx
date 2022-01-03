@@ -12,11 +12,12 @@ export const Faq = () => {
   const serviceID = "service_77jp9r9";
   const templateID = "template_q0f820h";
   const userID = "user_ULkTbFhXx27CetTfYChwV";
+  const sendMailTo = (mail) => {
+    const sendMail = (event) => {
+      event.preventDefault();
 
-  const sendMail = (event) => {
-    event.preventDefault();
-
-    emailjs.sendForm();
+      emailjs.sendForm();
+    };
   };
 
   return (
