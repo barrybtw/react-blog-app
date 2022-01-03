@@ -98,7 +98,7 @@ export const Faq = () => {
         </div>
       </div>
       <div className="contact__section">
-        <h1 className="contact__title stroke">CONTACT US</h1>
+        <h1 className="contact__title">CONTACT US</h1>
         <form action="" className="contact__form" ref={form} id="form">
           <div className="contact__form-left contact__form--part">
             <div className="contact__form-field contact__form-name">
