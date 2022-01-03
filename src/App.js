@@ -17,7 +17,6 @@ export const getPhotoFromId = async (id) => {
 };
 export const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
-  console.log(isAuth);
 
   const signUserOut = () => {
     signOut(auth).then(() => {

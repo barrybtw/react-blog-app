@@ -65,8 +65,28 @@
   color: #f2385b;
 }
 
-.edit-profile__name {
-  padding-bottom: 12px;
+.edit-profile__name--hidden {
+  margin: 12px 0;
+  color: rgba(0, 0, 0, 0.9);
+  border: none;
+  opacity: 80%;
+  padding: 6px 4px;
+  border-radius: 5px;
+  background: rgb(219, 219, 219);
+  &::placeholder {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.29);
+  }
+}
+
+.edit-profile__biography {
+    margin: 12px 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.edit-profile__biography--label {
+    margin-bottom: 12px;
 }
 
 .edit-profile__biography--hidden {
@@ -84,6 +104,6 @@
 }
 
 .edit-profile__message {
-    padding-top: 12px;
-    color: #75EF07;
+  padding-top: 12px;
+  color: #75ef07;
 }

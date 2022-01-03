@@ -15,9 +15,6 @@ export const Profile = () => {
     };
     getUser(id);
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <div className="profile__page">
       <div className="profile__card">

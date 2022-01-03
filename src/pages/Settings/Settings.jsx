@@ -137,21 +137,22 @@ export const Settings = ({ isAuth }) => {
                 </h3>
                 {hiddenInput && (
                   <input
+                    placeholder="begin typing..."
                     className="edit-profile__name--hidden"
                     onChange={(e) => setDisplayName(e.target.value)}
                     onKeyPress={(e) => e.key === "Enter" && handleKeyPress()}
                   />
                 )}
               </strong>
-              <p className="edit-profile__biography">
-                <strong
-                  className="text--purple click"
+              <div className="edit-profile__biography">
+                <div
+                  className="edit-profile__biography--label text--purple click"
                   onClick={() => setHiddenTextArea(true)}
                 >
                   Biography:{" "}
-                </strong>{" "}
+                </div>{" "}
                 {user.biography}
-              </p>
+              </div>
               {hiddenTextArea && (
                 <textarea
                   type="text"
