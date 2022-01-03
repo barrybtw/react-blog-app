@@ -367,3 +367,19 @@
     transform: scale(1.05);
   }
 }
+
+@media screen and (max-width: 1120px) {
+  .home__blog-title {
+    font-size: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 880px) {
+  .home__blog-title {
+    font-size: 1rem !important;
+  }
+  .home__blog-content-top {
+    p {
+      font-size: 0.85rem;
+    }
+  }
+}
