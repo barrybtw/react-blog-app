@@ -27,6 +27,9 @@ export const Faq = () => {
         console.log(error);
       }
     );
+    setName("");
+    setMail("");
+    setMessage("");
   };
 
   return (
