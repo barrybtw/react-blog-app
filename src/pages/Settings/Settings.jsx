@@ -2,12 +2,13 @@ import "./settings.scss";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "./../../firebase/config";
 import { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 
 export const Settings = ({ isAuth }) => {
   const [user, setUser] = useState([]);
   const id = localStorage.getItem("id");
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const getUser = async () => {
@@ -18,37 +19,49 @@ export const Settings = ({ isAuth }) => {
     };
     getUser(id);
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   const handleChange = (e) => {
-    let selected = e.target.files[0];
-    console.log(selected);
+    e.preventDefault();
+    const file = e.target.files[0];
+    uploadFile(file);
   };
 
-//   const uploadFile = (file) => {
-//     const storageRef = ref(storage, `/files/${file.name}`);
-//     const uploadTask = uploadBytesResumable(storageRef, file);
+  const uploadFile = (file) => {
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-//     uploadTask.on(
-//       "state_changed",
-//       (snapshot) => {
-//         const prog = Math.round(
-//           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-//         );
-//         setProgress(prog);
-//       },
-//       (err) => {
-//         console.log(err);
-//       },
-//       () => {
-//         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-//           createNewBlog(url, title, desc);
-//         });
-//       }
-//     );
-//   };
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const prog = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(prog);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            localStorage.setItem("updatedProfileImg", url);
+        });
+      }
+    );
+  };
+
+//   const updateProfileImage = async (url) => {
+//     const postCollectionRef = collection(db, "users");
+//     // await addDoc(postCollectionRef, {
+//     //     title,
+//     //     blogid: uuidv4(),
+//     //     post: desc,
+//     //     authorID: auth.currentUser.uid,
+//     //     authorName: auth.currentUser.displayName,
+//     //     image: url,
+//     //     createdAt: new Date(),
+//     //     postTime: dtfUS.format(specialDate),
+//     //   });
+//   }
 
   return (
     <section id="edit-profile">
@@ -58,7 +71,7 @@ export const Settings = ({ isAuth }) => {
           <div className="edit-profile--info">
             <div className="edit-profile">
               <figure className="edit-profile__img--wrapper">
-                <img className="edit-profile__img" src={user.photoURL} alt="" />
+                <img className="edit-profile__img" src={localStorage.getItem("updatedProfileImg") !== null ? localStorage.getItem("updatedProfileImg") : user.photoURL} alt="" />
                 <div className="edit-profile__overlay">
                   <div className="edit-profile--form-wrapper">
                     <label className="edit-profile--label">
@@ -75,11 +88,11 @@ export const Settings = ({ isAuth }) => {
                   </div>
                 </div>
               </figure>
-              <strong class="text--purple">
+              <strong className="text--purple">
                 <h3 className="edit-profile__name click">{user.userName}</h3>
               </strong>
               <p className="edit-profile__biography">
-                <strong class="text--purple click">Biography: </strong>{" "}
+                <strong className="text--purple click">Biography: </strong>{" "}
                 {user.biography}
               </p>
             </div>
