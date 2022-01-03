@@ -2,12 +2,17 @@ import "./settings.scss";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "./../../firebase/config";
 import { useState, useEffect } from "react";
-import { doc, getDoc, collection } from "firebase/firestore";
-import { auth, db } from "../../firebase/config";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 export const Settings = ({ isAuth }) => {
   const [user, setUser] = useState([]);
   const id = localStorage.getItem("id");
+  const [displayName, setDisplayName] = useState(null);
+  const [biography, setBiography] = useState(null);
+  const [hiddenInput, setHiddenInput] = useState(false);
+  const [message, setMessage] = useState(false);
+  const [hiddenTextArea, setHiddenTextArea] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -24,6 +29,16 @@ export const Settings = ({ isAuth }) => {
     e.preventDefault();
     const file = e.target.files[0];
     uploadFile(file);
+  };
+
+  const handleKeyPress = () => {
+    updateProfileName();
+    setHiddenInput(false);
+  };
+
+  const handleAreaKeyPress = () => {
+    updateProfileBio();
+    setHiddenTextArea(false);
   };
 
   const uploadFile = (file) => {
@@ -43,25 +58,50 @@ export const Settings = ({ isAuth }) => {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            localStorage.setItem("updatedProfileImg", url);
+          updateProfileImage(url);
         });
       }
     );
   };
 
-//   const updateProfileImage = async (url) => {
-//     const postCollectionRef = collection(db, "users");
-//     // await addDoc(postCollectionRef, {
-//     //     title,
-//     //     blogid: uuidv4(),
-//     //     post: desc,
-//     //     authorID: auth.currentUser.uid,
-//     //     authorName: auth.currentUser.displayName,
-//     //     image: url,
-//     //     createdAt: new Date(),
-//     //     postTime: dtfUS.format(specialDate),
-//     //   });
-//   }
+  const updateProfileImage = async (url) => {
+    const usersRef = doc(db, "users", id);
+    await updateDoc(usersRef, {
+      photoURL: url,
+    })
+      .then(() => {
+        setMessage(true);
+      })
+      .catch((err) => {
+        console.log("ERROR" + err);
+      });
+  };
+
+  const updateProfileName = async () => {
+    const usersRef = doc(db, "users", id);
+    await updateDoc(usersRef, {
+      userName: displayName,
+    })
+      .then(() => {
+        setMessage(true);
+      })
+      .catch((err) => {
+        console.log("ERROR" + err);
+      });
+  };
+
+  const updateProfileBio = async () => {
+    const usersRef = doc(db, "users", id);
+    await updateDoc(usersRef, {
+      biography: biography,
+    })
+      .then(() => {
+        setMessage(true);
+      })
+      .catch((err) => {
+        console.log("ERROR" + err);
+      });
+  };
 
   return (
     <section id="edit-profile">
@@ -71,7 +111,7 @@ export const Settings = ({ isAuth }) => {
           <div className="edit-profile--info">
             <div className="edit-profile">
               <figure className="edit-profile__img--wrapper">
-                <img className="edit-profile__img" src={localStorage.getItem("updatedProfileImg") !== null ? localStorage.getItem("updatedProfileImg") : user.photoURL} alt="" />
+                <img className="edit-profile__img" src={user.photoURL} alt="" />
                 <div className="edit-profile__overlay">
                   <div className="edit-profile--form-wrapper">
                     <label className="edit-profile--label">
@@ -89,12 +129,47 @@ export const Settings = ({ isAuth }) => {
                 </div>
               </figure>
               <strong className="text--purple">
-                <h3 className="edit-profile__name click">{user.userName}</h3>
+                <h3
+                  className="edit-profile__name click"
+                  onClick={() => setHiddenInput(true)}
+                >
+                  {user.userName}
+                </h3>
+                {hiddenInput && (
+                  <input
+                    className="edit-profile__name--hidden"
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && handleKeyPress()}
+                  />
+                )}
               </strong>
               <p className="edit-profile__biography">
-                <strong className="text--purple click">Biography: </strong>{" "}
+                <strong
+                  className="text--purple click"
+                  onClick={() => setHiddenTextArea(true)}
+                >
+                  Biography:{" "}
+                </strong>{" "}
                 {user.biography}
               </p>
+              {hiddenTextArea && (
+                <textarea
+                  type="text"
+                  name="text"
+                  id="text"
+                  className="edit-profile__biography--hidden"
+                  placeholder="Begin typing..."
+                  onChange={(e) => setBiography(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && handleAreaKeyPress()}
+                />
+              )}
+              {message && (
+                <div className="edit-profile__message">
+                  <h1 className="message">
+                    Please refresh your screen to see the updates!
+                  </h1>
+                </div>
+              )}
             </div>
           </div>
         </div>

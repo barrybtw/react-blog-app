@@ -3,9 +3,14 @@ import { FiSettings } from "react-icons/fi";
 import { FaBeer, FaQuestion } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect} from "react";
+import { doc, getDoc, collection, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 export const Menu = ({ isAuth }) => {
   const [isActive, setIsActive] = useState(false);
+  const [user, setUser] = useState([]);
+  const id = localStorage.getItem("id");
+  const [progress, setProgress] = useState(0);
   const ref = useRef();
 
   useEffect(() => {
@@ -23,6 +28,16 @@ export const Menu = ({ isAuth }) => {
     }
   }, [isActive])
 
+  useEffect(() => {
+    const getUser = async () => {
+      const userRef = doc(db, "users", id);
+      const getUser = await getDoc(userRef).then((user) => {
+        setUser(user.data());
+      });
+    };
+    getUser(id);
+  }, []);
+
   return (
     <div className="menu__container">
       {isAuth && (
@@ -30,7 +45,7 @@ export const Menu = ({ isAuth }) => {
           {isAuth ? (
             <img
               className="profile__photo"
-              src={localStorage.getItem("Photo")}
+              src={user.photoURL}
               alt=""
             />
           ) : (
