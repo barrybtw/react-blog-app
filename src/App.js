@@ -35,7 +35,7 @@ export const App = () => {
         <Route path="/FAQ" element={<Faq />} />
         <Route path="/settings" element={<Settings isAuth={isAuth} />} />
         <Route path="/user/:id" element={<Profile />} />
-        <Route path="/user-profiles" element={<Userlist />} />
+        {/* <Route path="/user-profiles" element={<Userlist />} /> */}
       </Routes>
     </Router>
   );

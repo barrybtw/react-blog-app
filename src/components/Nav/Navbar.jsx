@@ -64,7 +64,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
           </Link>
         </li>
         {/* Blog button */}
-        <li className="nav__link">
+        {/* <li className="nav__link">
           <Link
             to="/user-profiles"
             className="
@@ -74,7 +74,7 @@ export const Navbar = ({ isAuth, setIsAuth, signUserOut }) => {
           >
             Users
           </Link>
-        </li>
+        </li> */}
         {/* If logged in, create blog button, else nothing, aka. conditional render */}
         {isAuth && (
           <li className="nav__link">
